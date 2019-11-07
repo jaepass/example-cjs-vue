@@ -1,0 +1,74 @@
+[
+    {
+      "id": "1",
+      "title": "Test Product 1",
+      "image": "https://bit.ly/2LcaycC",
+      "price": 50
+    },
+    {
+      "id": "2",
+      "title": "Test Product 2",
+      "image": "https://bit.ly/2GsWuwA",
+      "price": 50
+    },
+    {
+      "id": "3",
+      "title": "Test Product 3",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/61ISFY1cL-L._SL1000_.jpg",
+      "price": 50
+    },
+    {
+      "id": "4",
+      "title": "Test Product 4",
+      "image": "https://www.bigw.com.au/medias/sys_master/images/images/h7f/h4a/11988377665566.jpg",
+      "price": 50
+    },
+    {
+      "id": "5",
+      "title": "Test Product 5",
+      "image": "https://www.bigw.com.au/medias/sys_master/images/images/h7f/h4a/11988377665566.jpg",
+      "price": 50
+    },
+    {
+      "id": "6",
+      "title": "Test Product 6",
+      "image": "https://www.bigw.com.au/medias/sys_master/images/images/h7f/h4a/11988377665566.jpg",
+      "price": 50
+    },
+    {
+      "id": "7",
+      "title": "Test Product 7",
+      "image": "https://www.bigw.com.au/medias/sys_master/images/images/h7f/h4a/11988377665566.jpg",
+      "price": 50
+    },
+    {
+      "id": "8",
+      "title": "Test Product 8",
+      "image": "https://www.bigw.com.au/medias/sys_master/images/images/h7f/h4a/11988377665566.jpg",
+      "price": 50
+    },
+    {
+      "id": "9",
+      "title": "Test Product 9",
+      "image": "https://www.bigw.com.au/medias/sys_master/images/images/h7f/h4a/11988377665566.jpg",
+      "price": 50
+    },
+    {
+      "id": "10",
+      "title": "Test Product 10",
+      "image": "https://www.bigw.com.au/medias/sys_master/images/images/h7f/h4a/11988377665566.jpg",
+      "price": 50
+    },
+    {
+      "id": "11",
+      "title": "Test Product 11",
+      "image": "https://www.bigw.com.au/medias/sys_master/images/images/h7f/h4a/11988377665566.jpg",
+      "price": 50
+    },
+    {
+      "id": "12",
+      "title": "Test Product 12",
+      "image": "https://www.bigw.com.au/medias/sys_master/images/images/h7f/h4a/11988377665566.jpg",
+      "price": 50
+    }
+  ]
