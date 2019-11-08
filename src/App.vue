@@ -49,7 +49,7 @@ import Footer from "@/components/Footer.vue";
 
 
 // Initialize store with public key, store key in variable myStore
-const myStore = new Commerce('pk_168757b95ff55c066b59b9e93c48a2b0e7bc1b97c798b', true);
+const myStore = new Commerce('pk_17054571618e73520760e522b00e08ee196503b14e95c', true);
 
 
 export default {
