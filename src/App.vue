@@ -113,5 +113,9 @@ h1, h2, h3, h4{
   text-transform: uppercase;
 }
 
+p, a{
+  letter-spacing: 2.5px;
+}
+
 
 </style>
