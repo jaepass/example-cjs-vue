@@ -9,7 +9,7 @@
             
             <nav>
                 <div class="nav-items">
-                    <p>shop</p>
+                    <a href=""><p class="shop">shop</p></a>
                     <a href="/demostore-cjs/#wishlist"><img width="28px" src="@/assets/fav-icon.svg" alt="wishlist icon"></a>
                     <a href=""><img width="28px" src="@/assets/shopcart-icon.svg" alt="Tribal Logo"></a>
                 </div>
@@ -56,6 +56,27 @@ nav{
     grid-area: nav;
     background: #040034;
     background-size: cover;
+    position: relative;
+}
+
+.nav-items{
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    
+}
+
+.nav-items a{
+    padding-left: 10px;
+}
+
+.shop{
+    color: white;
+    text-transform: uppercase;
+    border: 1px solid white;
+    padding: 5px 9px;
 }
 
 .hero-img-2{
@@ -74,10 +95,6 @@ nav{
     object-fit: contain;
 }
 
-.nav-items{
-    border: 1px solid yellow;
-    display: flex;
-}
 
 
 .logo{
