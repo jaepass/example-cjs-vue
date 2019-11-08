@@ -8,7 +8,6 @@
       <div class="flex mb-4">
         <div class="row" v-for="category in categories" :key="category">
           <p>{{ category.name }}</p>
-          <p>{{ category.description }}</p>
           </div>
         </div>
       </div>
