@@ -13,7 +13,7 @@
             
             <nav>
                 <div class="nav-items">
-                    <a href=""><p class="shop">shop</p></a>
+                    <a href="/demostore-vue2/shop"><p class="shop">shop</p></a>
                     <a href="/demostore-cjs/#wishlist"><img width="28px" src="@/assets/fav-icon.svg" alt="wishlist icon"></a>
                     <a href=""><img width="28px" src="@/assets/shopcart-icon.svg" alt="Tribal Logo"></a>
                 </div>
