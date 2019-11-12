@@ -125,7 +125,7 @@ export default {
 <style>
 body {
   background-color: #ffffff;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 h1, h2, h3, h4{

@@ -104,7 +104,8 @@ nav{
     grid-area: nav;
     background: #040034;
     background-size: cover;
-    position: relative;
+    /* position: relative; */
+    position: sticky;
 }
 
 .nav-items{
