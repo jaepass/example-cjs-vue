@@ -11,7 +11,7 @@
           <p>{{ category.name }}</p>
           </div> -->
 
-          <div class="row">
+          <div class="row" id="shop">
           <!-- :key is for Vue to keep track of items with ids -->
             <div class="col-sm-4" v-for="product in products" :key="product.id">
               <product  :isInCart="isInCart(product)"
@@ -24,7 +24,7 @@
         </div>
         <div class="cart-wishlist">
           <!-- Cart modal -->
-          <div class="col-md-5 my-5">
+          <div class="col-md-5 my-5" id="shopping-cart">
             <cart v-on:pay="pay()" v-on:remove-from-cart="removeFromCart($event)" :items="cart"></cart>
           </div>
           <!-- Wishlist modal -->

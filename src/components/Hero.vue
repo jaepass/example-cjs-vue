@@ -6,16 +6,16 @@
                     <img width="175px" src="@/assets/logo.png" alt="Tribal Logo">
                 </div>
                 <div class="hero-text">
-                     <a href=""><p class="discover">discover</p></a>
+                     <a href="/demostore-vue2/#shop"><p class="discover">discover</p></a>
                      <p>classic timepieces</p>
                 </div>
             </div>
             
             <nav>
                 <div class="nav-items">
-                    <a href="/demostore-vue2/shop"><p class="shop">shop</p></a>
-                    <a href="/demostore-cjs/#wishlist"><img width="28px" src="@/assets/fav-icon.svg" alt="wishlist icon"></a>
-                    <a href=""><img width="28px" src="@/assets/shopcart-icon.svg" alt="Tribal Logo"></a>
+                    <a href="/demostore-vue2/#shop"><p class="shop">shop</p></a>
+                    <a href="/demostore-vue2/#wishlist"><img width="28px" src="@/assets/fav-icon.svg" alt="wishlist icon"></a>
+                    <a href="/demostore-vue2/#shopping-cart"><img width="28px" src="@/assets/shopcart-icon.svg" alt="Tribal Logo"></a>
                 </div>
             </nav>
 

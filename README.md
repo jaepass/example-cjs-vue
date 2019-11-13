@@ -4,6 +4,8 @@
 
 ### Visit Live Site
 
+https://jaepass.github.io/demostore-vue2/
+
 ## Project setup
 ```
 npm install
