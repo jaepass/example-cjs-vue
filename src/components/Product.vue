@@ -36,16 +36,12 @@ export default{
 
     .card h4{
         padding-top: 20px;
-        font-size: 20px;
+        font-size: 17px;
         font-weight: 700;
-        letter-spacing: 3.85px;
+        letter-spacing: 2.25px;
         line-height: 32px;
     }
 
-    .card p{
-        letter-spacing: 2.4px;
-        padding-top: 5px;
-    }
 
     .add-btns{
         display: flex;
@@ -61,7 +57,7 @@ export default{
     button.btn:hover{
         text-decoration: none;
         background-color: transparent;
-        color: #DBA28B;
+        color: #040034;
     }
 
     button img{

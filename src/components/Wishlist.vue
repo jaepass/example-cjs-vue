@@ -27,8 +27,6 @@ export default {
 
 <style>
   .wishlist-wrapper h2{
-    font-weight: 700;
-    letter-spacing: 3.8px;
     padding-bottom: 15px;
   }
 

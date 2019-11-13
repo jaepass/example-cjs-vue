@@ -5,13 +5,12 @@
         <li class="list-group-item item-name" v-for="item in items" :key="item.id">
           {{ item.name }} <span class="text-center">{{ item.price.formatted_with_symbol }}</span>
           <button @click="$emit('remove-from-cart',item)"
-                  class="btn badge badge-warning float-right">Remove</button>
+                  class="bg-transparent py-2 px-4 border hover:border-transparent rounded float-right">Remove</button>
                   
         </li>
       </ul>
-      <div class="card p-3 my-5" v-if="items.length >= 1">
+      <div class="card" v-if="items.length >= 1">
         <h4 class="text-center">Total Due: ${{ cartTotal.toFixed(2) }}</h4>
-        <h4 class="text-center">{{ cartCount }}</h4>
       </div>
     <!-- <button
       :disabled="items.length === 0"
@@ -43,6 +42,8 @@ export default {
 </script>
 
 <style>
-
+.cart-wrapper h2{
+  padding-bottom: 15px;
+}
 </style>
 
