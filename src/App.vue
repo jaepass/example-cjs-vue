@@ -82,8 +82,22 @@ export default {
       })
       .catch((error) => {
                 alert(error);
-            });  
+      }); 
+
+       //Generate token checkout 
+      myStore.checkout.generateToken()
+        .then((response) => {
+            this.checkout = response.id; // e.g. chkt_959gvxcZ6lnJ7
+            // Grab your order confirmation data from `response` and show your customer something nice!
+            
+        })
+        
+        .catch((error) => {
+                alert(error);
+        });  
+
   },
+  
 
   //Declare action methods on object
   methods: {
@@ -113,9 +127,9 @@ export default {
     removeFromCart(product) {
       this.cart = this.cart.filter(item => item.id !== product.id);
     },
-    pay() {
+    pay(){
       this.cart = [];
-      alert("Thanks! Shopping successfully completed. ");
+      this.checkout = [];
     }
   } 
 };

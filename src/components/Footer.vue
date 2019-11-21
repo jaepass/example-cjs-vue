@@ -28,8 +28,7 @@
     .footer-logo{
         position: absolute;
         top: 40%;
-        right: 40%;
-        transform: translate(-50%);
+        right: 46%;
     }
 
     .footer-logo img{

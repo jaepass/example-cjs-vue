@@ -12,11 +12,12 @@
       <div class="card" v-if="items.length >= 1">
         <h4 class="text-center">Total Due: ${{ cartTotal.toFixed(2) }}</h4>
       </div>
-    <!-- <button
+
+    <button
       :disabled="items.length === 0"
       @click="$emit('pay')"
       class="btn btn-info form-control"
-    >Pay Now</button> -->
+    >Pay Now</button>
   </div>
 </template>
 
@@ -30,14 +31,11 @@ export default {
       cartCount() {
           return this.items.reduce((acc) => acc += 1, 0);
       }
+    },
+
+    mounted(){
+      this.generateToken();
     }
-    // computed: {
-    //   total() {
-    //     return this.items.reduce(function (acc, item) {
-    //       return acc + Number(item.price.formatted_with_symbol)
-    //     }, 0)
-    //   }
-    // }
 };
 </script>
 
