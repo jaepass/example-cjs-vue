@@ -32,10 +32,6 @@ export default {
           return this.items.reduce((acc) => acc += 1, 0);
       }
     },
-
-    mounted(){
-      this.generateToken();
-    }
 };
 </script>
 
@@ -43,5 +39,7 @@ export default {
 .cart-wrapper h2{
   padding-bottom: 15px;
 }
+
+
 </style>
 
