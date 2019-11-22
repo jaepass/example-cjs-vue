@@ -19,11 +19,7 @@
           <div class="col-md-5 my-5" id="shopping-cart">
             <cart v-on:pay="pay()" v-on:remove-from-cart="removeFromCart($event)" :items="cart"></cart>
           </div>
-          <!-- Wishlist container -->
-          <div class="col-md-5 my-5" id="wishlist">
-            <wishlist v-on:remove-from-wishlist="removeFromWishlist($event)" :items="wishlist"></wishlist>
-          </div>
-        </div><!-- END Cart/Wishlist Container -->
+        </div><!-- END Cart Container -->
 
       </div><!-- END of App Container -->
       
