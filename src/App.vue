@@ -5,6 +5,7 @@
       <div class="flex mb-4">
 
           <div class="row" id="shop">
+          <!-- Loop through products and display -->
           <!-- :key is for Vue to keep track of items with ids -->
             <div class="col-sm-4" v-for="product in products" :key="product.id">
               <product  :isInCart="isInCart(product)"
@@ -14,7 +15,7 @@
           </div>
         </div>
 
-        <div class="cart-wishlist">
+        <div class="cart">
           <!-- Cart container -->
           <div class="col-md-5 my-5" id="shopping-cart">
             <cart v-on:pay="pay()" v-on:remove-from-cart="removeFromCart($event)" :items="cart"></cart>
@@ -23,7 +24,6 @@
 
       </div><!-- END of App Container -->
       
-    <store-footer></store-footer>
     </div>
 </template>
 
@@ -35,7 +35,7 @@ import Product from "@/components/Product.vue";
 import Cart from "@/components/Cart.vue";
 
 // Initialize store with public key, store key in variable
-const myStore = new Commerce('pk_17054571618e73520760e522b00e08ee196503b14e95c', true);
+const commerce = new Commerce('pk_17054571618e73520760e522b00e08ee196503b14e95c', true);
 
 export default {
   name: "app",
@@ -47,40 +47,36 @@ export default {
     return {
       cart: [],
       products: []
-      // categories:[]
     };
   },
 
-  mounted() {
+  created() {
     //List all products from store 
-    myStore.products.list()
+    commerce.products.list()
       .then((resp) => {
+        //Successful response
         this.products = resp.data
       })
+      //Error
       .catch((error) => {
-                alert(error);
-      }); 
-
-       //Generate token checkout 
-      // myStore.checkout.generateToken()
-      //   .then((response) => {
-      //       this.checkout = response.id; // e.g. chkt_959gvxcZ6lnJ7
-      //       // Grab your order confirmation data from `response` and show your customer something nice!
-            
-      //   })
-        
-      //   .catch((error) => {
-      //           alert(error);
-      //   });  
-
+          alert(error);
+      });
+    //Create cart object
+    commerce.cart.retrieve((cart) => {
+          if (!cart.error) {
+            this.cart = cart;
+          }
+        });
   },
   
   //Declare action methods on object
   methods: {
-
     //Cart methods
+
+    //Add products to cart
     addToCart(product) {
-      this.cart.push(product);
+      //this.cart.push(product);
+      commerce.cart.add(product);
     },
     isInCart(product) {
       const item = this.cart.find(item => item.id === product.id);
@@ -93,13 +89,13 @@ export default {
     removeFromCart(product) {
       this.cart = this.cart.filter(item => item.id !== product.id);
     },
-    pay(){
-      this.cart = [];
-      this.checkout = [];
-    },
-    openCheckoutModal(){
+    // pay(){
+    //   this.cart = [];
+    //   this.checkout = [];
+    // },
+    // openCheckoutModal(){
 
-    },
+    // },
   } 
 };
 
@@ -116,7 +112,7 @@ p, a{
   letter-spacing: 2px;
 }
 
-.cart-wishlist{
+.cart{
   display: flex;
   justify-content: space-between;
 }
