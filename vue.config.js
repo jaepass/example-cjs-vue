@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath: '/demostore-vue2/'
+    publicPath: '/example-cjs-vue/'
 }
