@@ -1,23 +1,14 @@
 <template>
   <div class="storefront">
-    
-  <!-- Hero component contains header -->
-  <store-hero></store-hero>
 
     <div class="container mx-auto px-4">
       <div class="flex mb-4">
-        <!-- CATEGORIES OUTPUT TESTING -->
-        <!-- <div class="row" v-for="category in categories" :key="category">
-          <p>{{ category.name }}</p>
-          </div> -->
 
           <div class="row" id="shop">
           <!-- :key is for Vue to keep track of items with ids -->
             <div class="col-sm-4" v-for="product in products" :key="product.id">
               <product  :isInCart="isInCart(product)"
                         v-on:add-to-cart="addToCart(product)"
-                        :isInWishlist="isInWishlist(product)"
-                        v-on:add-to-wishlist="addToWishlist(product)"
                         :product="product"></product>  
             </div><!-- END Product Catalogue -->
           </div>
@@ -44,13 +35,8 @@
 <script>
 import Commerce from '@chec.io/commerce';
 
-import Hero from "@/components/Hero.vue";
-import Footer from "@/components/Footer.vue";
-
-// import products from "@/products.json";
 import Product from "@/components/Product.vue";
 import Cart from "@/components/Cart.vue";
-import Wishlist from "@/components/Wishlist.vue";
 
 // Initialize store with public key, store key in variable
 const myStore = new Commerce('pk_17054571618e73520760e522b00e08ee196503b14e95c', true);
@@ -58,11 +44,8 @@ const myStore = new Commerce('pk_17054571618e73520760e522b00e08ee196503b14e95c',
 export default {
   name: "app",
   components: {
-    'store-hero': Hero,
-    'store-footer': Footer,
     Product, 
     Cart, 
-    Wishlist
   },
   data() {
     return {
@@ -77,7 +60,6 @@ export default {
     //List all products from store 
     myStore.products.list()
       .then((resp) => {
-        //console.log(resp);
         this.products = resp.data
       })
       .catch((error) => {
@@ -98,23 +80,9 @@ export default {
 
   },
   
-
   //Declare action methods on object
   methods: {
-    //Wishlist methods
-    addToWishlist(product) {
-      this.wishlist.push(product);
-    },
-    isInWishlist(product) {
-      const item = this.wishlist.find(item => item.id === product.id);
-      if (item) {
-        return true;
-      }
-      return false;
-    },
-    removeFromWishlist(product) {
-      this.wishlist = this.wishlist.filter(item => item.id !== product.id);
-    },
+
     //Cart methods
     addToCart(product) {
       this.cart.push(product);

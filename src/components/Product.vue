@@ -8,8 +8,6 @@
             <p class="text-center text-muted card-subtitle display-5 price">{{product.price.formatted_with_symbol}}</p>
             <!-- add to cart add to wishlist buttons -->
             <div class="add-btns">
-                <button :disabled="isInWishlist" @click="$emit('add-to-wishlist',product)" class="btn btn-info form-control">{{isInWishlist ? 'Added to wishlist': 'Add to Wishlist'}}
-                </button>
                 <button :disabled="isInCart" @click="$emit('add-to-cart', product)" class="btn btn-info form-control">{{ isInCart ? 'Added to Cart' : 'Add to Cart' }}</button>
             </div><!-- End of Adding btns -->
         </div>
@@ -18,7 +16,7 @@
 
 <script>
 export default{
-    props: ['product','isInCart', 'isInWishlist']
+    props: ['product','isInCart']
 }
 </script>
 
