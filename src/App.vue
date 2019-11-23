@@ -1,6 +1,10 @@
 <template>
   <div class="storefront">
 
+    <nav>
+        <a href="/example-cjs-vue/#shopping-cart"><img width="32px" src="@/assets/bag-icon.svg" alt="shopping bag icon"></a>
+    </nav>
+
     <div class="container mx-auto px-4">
       <div class="flex mb-4">
 
@@ -8,9 +12,10 @@
           <!-- Loop through products and display -->
           <!-- :key is for Vue to keep track of items with ids -->
             <div class="col-sm-4" v-for="product in products" :key="product.id">
+              <!-- Bind product to cart -->
               <product  :isInCart="isInCart(product)"
                         v-on:add-to-cart="addToCart(product)"
-                        :product="product"></product>  
+                        :product="product" />  
             </div><!-- END Product Catalogue -->
           </div>
         </div>
@@ -26,7 +31,6 @@
       
     </div>
 </template>
-
 
 <script>
 import Commerce from '@chec.io/commerce';
@@ -50,6 +54,7 @@ export default {
     };
   },
 
+  //When Vue app is created, run these functions to fetch data from API
   created() {
     //List all products from store 
     commerce.products.list()
@@ -61,12 +66,18 @@ export default {
       .catch((error) => {
           alert(error);
       });
-    //Create cart object
-    commerce.cart.retrieve((cart) => {
-          if (!cart.error) {
-            this.cart = cart;
-          }
-        });
+
+      // invoke commerce cart method to retrieve cart in session
+      commerce.Cart.retrieve((cart) => {
+        if (!cart.error) {
+          this.cart = cart;
+        }
+      });
+   
+    //Will use cart id in current session
+    // Commerce.Cart.retrieve((resp) => { 
+    //   return resp;
+    // });
   },
   
   //Declare action methods on object
@@ -75,8 +86,8 @@ export default {
 
     //Add products to cart
     addToCart(product) {
-      //this.cart.push(product);
-      commerce.cart.add(product);
+      this.cart.push(product);
+      //commerce.cart.push(product);
     },
     isInCart(product) {
       const item = this.cart.find(item => item.id === product.id);
@@ -107,9 +118,16 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-
 p, a{
   letter-spacing: 2px;
+}
+
+nav img{
+  display: flex;
+  position: fixed;
+  top: 20px;
+  right: 40px;
+  z-index: 999;
 }
 
 .cart{

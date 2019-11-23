@@ -6,7 +6,7 @@
             <h4 class="title text-center card-title display-5">{{product.name}}</h4>
             <p class="description text-center card-text display-5" v-html="product.description"></p>
             <p class="text-center text-muted card-subtitle display-5 price">{{product.price.formatted_with_symbol}}</p>
-            <!-- add to cart add to wishlist buttons -->
+            <!-- add to cart button -->
             <div class="add-btns">
                 <button :disabled="isInCart" @click="$emit('add-to-cart', product)" class="btn btn-info form-control">{{ isInCart ? 'Added to Cart' : 'Add to Cart' }}</button>
             </div><!-- End of Adding btns -->
@@ -16,6 +16,7 @@
 
 <script>
 export default{
+    name: 'product',
     props: ['product','isInCart']
 }
 </script>
