@@ -40,6 +40,5 @@ export default {
   padding-bottom: 15px;
 }
 
-
 </style>
 

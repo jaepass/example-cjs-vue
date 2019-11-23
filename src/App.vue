@@ -3,6 +3,7 @@
 
     <nav>
         <a href="/example-cjs-vue/#shopping-cart"><img width="32px" src="@/assets/bag-icon.svg" alt="shopping bag icon"></a>
+        <h1>{{ cart.length }}</h1>
     </nav>
 
     <div class="container mx-auto px-4">
@@ -56,6 +57,7 @@ export default {
 
   //When Vue app is created, run these functions to fetch data from API
   created() {
+
     //List all products from store 
     commerce.products.list()
       .then((resp) => {
@@ -86,8 +88,9 @@ export default {
 
     //Add products to cart
     addToCart(product) {
+      // this.cart.push(product);
       this.cart.push(product);
-      //commerce.cart.push(product);
+      return product;
     },
     isInCart(product) {
       const item = this.cart.find(item => item.id === product.id);
@@ -107,6 +110,14 @@ export default {
     // openCheckoutModal(){
 
     // },
+  },
+  computed: {
+    cartCount(){
+      return {
+        count: this.count, 
+        ...this.cart
+      }
+    }
   } 
 };
 
@@ -120,6 +131,10 @@ body {
 
 p, a{
   letter-spacing: 2px;
+}
+
+nav{
+  border: 1px solid red;
 }
 
 nav img{

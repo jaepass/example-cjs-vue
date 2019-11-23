@@ -1,0 +1,132 @@
+[
+  {
+    "id": "prod_31q0o3ZbYwDdjR",
+    "created": 1573002066,
+    "last_updated": 1574206123,
+    "active": true,
+    "permalink": "watch-brown-band",
+    "name": "Black MVMT Watch",
+    "description": "<p>Black leather MVMT watch</p>",
+    "price": {
+      "raw": 350,
+      "formatted": "350.00",
+      "formatted_with_symbol": "$350.00",
+      "formatted_with_code": "350.00 CAD"
+    },
+    "quantity": 20,
+    "media": {
+      "type": "image",
+      "source": "https://chec.nyc3.cdn.digitaloceanspaces.com/merchants/17054/images/46baa5bf01f6c42d74e7369781db8a52e3abd8055dcb89ad52340|c2594a2c-bf0b-422a-831e-8cbc5bbb7725.jpeg"
+    },
+    "conditionals": {
+      "is_active": true,
+      "is_free": false,
+      "is_pay_what_you_want": false,
+      "is_preorder": false,
+      "is_quantity_limited": true,
+      "is_sold_out": false,
+      "has_digital_delivery": false,
+      "has_physical_delivery": true,
+      "has_images": true,
+      "has_video": false,
+      "has_rich_embed": false,
+      "collects_fullname": false,
+      "collects_shipping_address": true,
+      "collects_billing_address": false,
+      "collects_extrafields": false
+    },
+    "is": {
+      "active": true,
+      "free": false,
+      "pay_what_you_want": false,
+      "preorder": false,
+      "quantity_limited": true,
+      "sold_out": false
+    },
+    "has": {
+      "digital_delivery": false,
+      "physical_delivery": true,
+      "images": true,
+      "video": false,
+      "rich_embed": false
+    },
+    "collects": {
+      "fullname": false,
+      "shipping_address": true,
+      "billing_address": false,
+      "extrafields": false
+    },
+    "checkout_url": {
+      "checkout": "https://checkout.chec.io/watch-brown-band?checkout=true",
+      "display": "https://checkout.chec.io/watch-brown-band"
+    },
+    "categories": [
+      { "id": "cat_jr2LM5Qar5ZV1g", "slug": "leather", "name": "Leather" }
+    ]
+  },
+  {
+    "id": "prod_BkyN5YrQrl0b69",
+    "created": 1573000582,
+    "last_updated": 1574206171,
+    "active": true,
+    "permalink": "watch-croc",
+    "name": "Nixon Watch",
+    "description": "<p>Dark brown leather gold trim Nixon watch</p>",
+    "price": {
+      "raw": 420,
+      "formatted": "420.00",
+      "formatted_with_symbol": "$420.00",
+      "formatted_with_code": "420.00 CAD"
+    },
+    "quantity": 20,
+    "media": {
+      "type": "image",
+      "source": "https://chec.nyc3.cdn.digitaloceanspaces.com/merchants/17054/images/1caae940e4d04a65fa4e695d8d0e9792b5aaa6b45dcb89d62143a|e1bf76eb-1d88-45a6-b516-4fa884b5e239.jpeg"
+    },
+    "conditionals": {
+      "is_active": true,
+      "is_free": false,
+      "is_pay_what_you_want": false,
+      "is_preorder": false,
+      "is_quantity_limited": true,
+      "is_sold_out": false,
+      "has_digital_delivery": false,
+      "has_physical_delivery": true,
+      "has_images": true,
+      "has_video": false,
+      "has_rich_embed": false,
+      "collects_fullname": false,
+      "collects_shipping_address": true,
+      "collects_billing_address": false,
+      "collects_extrafields": false
+    },
+    "is": {
+      "active": true,
+      "free": false,
+      "pay_what_you_want": false,
+      "preorder": false,
+      "quantity_limited": true,
+      "sold_out": false
+    },
+    "has": {
+      "digital_delivery": false,
+      "physical_delivery": true,
+      "images": true,
+      "video": false,
+      "rich_embed": false
+    },
+    "collects": {
+      "fullname": false,
+      "shipping_address": true,
+      "billing_address": false,
+      "extrafields": false
+    },
+    "checkout_url": {
+      "checkout": "https://checkout.chec.io/watch-croc?checkout=true",
+      "display": "https://checkout.chec.io/watch-croc"
+    },
+    "categories": [
+      { "id": "cat_jr2LM5Qar5ZV1g", "slug": "leather", "name": "Leather" }
+    ]
+  }
+]
