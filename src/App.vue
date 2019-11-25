@@ -1,9 +1,8 @@
 <template>
   <div class="storefront">
-    
     <nav>
         <a href="/example-cjs-vue/#shopping-cart"><img width="32px" src="@/assets/bag-icon.svg" alt="shopping bag icon"></a>
-        <p v-if="cartItems.length >= 1">{{ cartItems.length }}</p>
+        <p v-if="cartItems.length >= 1">{{ cartItems.total_items }}</p>
     </nav>
 
     <div class="container mx-auto px-4">
@@ -26,7 +25,7 @@
         <div class="cart">
           <div class="col-md-5 my-5" id="shopping-cart">
             <cart :items="cartItems"
-                  @remove-from-cart="removeFromCart($event)"
+                  @remove-from-cart="removeFromCart"
                   @pay="pay()" />
           </div>
         </div><!-- END Cart Container -->
@@ -63,8 +62,7 @@ export default {
   //When Vue app is created, run these functions to fetch data from API
   created() {
     //List all products from store 
-    this.commerce.products.list()
-      .then((resp) => {
+    this.commerce.products.list().then((resp) => {
         //Successful response
         this.products = resp.data;
       })
@@ -100,6 +98,7 @@ export default {
       }
       return false;
     },
+
     removeFromCart(lineItemId){
       this.commerce.cart.remove(lineItemId, (resp) => {
         if(!resp.error){
