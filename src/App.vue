@@ -1,9 +1,9 @@
 <template>
   <div class="storefront">
-
+    
     <nav>
         <a href="/example-cjs-vue/#shopping-cart"><img width="32px" src="@/assets/bag-icon.svg" alt="shopping bag icon"></a>
-        <p v-if="cart.length >= 1">{{ cart.length }}</p>
+        <p v-if="cartItems.length >= 1">{{ cartItems.length }}</p>
     </nav>
 
     <div class="container mx-auto px-4">
@@ -25,7 +25,7 @@
         <!-- Shopping Cart container -->
         <div class="cart">
           <div class="col-md-5 my-5" id="shopping-cart">
-            <cart :items="cart"
+            <cart :items="cartItems"
                   @remove-from-cart="removeFromCart($event)"
                   @pay="pay()" />
           </div>
@@ -55,8 +55,8 @@ export default {
   },
   data() {
     return {
-      products: {},
-      cart: []
+      products: [],
+      cart: null,
     };
   },
 
@@ -73,41 +73,69 @@ export default {
           alert(error);
       });
 
-      // invoke commerce cart method to retrieve cart in session
-      this.commerce.cart.retrieve((cart) => {
-        if (!cart.error) {
-          this.cart = cart
-        }
-      });
+    // invoke commerce cart method to retrieve cart in session
+    this.commerce.cart.retrieve().then((cart) => {
+      if (!cart.error) {
+        this.cart = cart
+      }
+    });
   },
   //Declare action methods on object
   methods: {
 
     //Add products to cart
     addToCart(product) {
-      this.cart.push(product);
+      this.commerce.cart.add({
+        id: product.id,
+        quantity: 1,
+      }).then(response => {
+        this.cart = response.cart
+      })
     },
+
     isInCart(product) {
-      const item = this.cart.find(item => item.id === product.id);
+      const item = this.cartItems.find(item => item.id === product.id);
       if (item) {
         return true;
       }
       return false;
     },
-    
-    removeFromCart(product) {
-      this.cart = this.cart.filter(item => item.id !== product.id);
-    },
+    removeFromCart(lineItemId){
+      this.commerce.cart.remove(lineItemId, (resp) => {
+        if(!resp.error){
+          this.cart = resp.cart;
+        }
+      })
+    }
+
+    // removeFromCart(product) {
+    //   this.cart = this.cart.filter(item => item.id !== product.id);
+    // },
     // pay(){
     //   this.cart = [];
     // },
+    // checkout() {
+    //   if (this.cart.total_items > 0) {
+    //     this.commerce.Checkout
+    //       .generateToken(this.cart.id, { type: 'cart' },
+    //         (checkout) => {
+    //           this.checkout = checkout;
+    //         },
+    //         function(error) {
+    //           console.log('Error:', error)
+    //         })
+    //   }
+    // },
   },
   computed: {
-    cartCount(){
-      return {
-        count: this.count, 
-        ...this.cart
-      }
+    // cartCount(){
+    //   return {
+    //     count: this.count, 
+    //     ...this.cart
+    //   }
+    // },
+    cartItems() {
+      return this.cart ? this.cart.line_items : []
     }
   } 
 };

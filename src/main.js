@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import Vue from 'vue'
 import App from './App.vue'
 import Commerce from '@chec.io/commerce';
@@ -8,6 +9,7 @@ const commerce = new Commerce('pk_17054571618e73520760e522b00e08ee196503b14e95c'
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App, { props: { commerce } }),
+  render: h => h(App,
+    { props: { commerce } }),
 }).$mount('#app')
 

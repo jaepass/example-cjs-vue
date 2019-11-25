@@ -8,8 +8,12 @@
             <p class="text-center text-muted card-subtitle display-5 price">{{product.price.formatted_with_symbol}}</p>
             <!-- add to cart button -->
             <div class="add-btns">
-                <button :disabled="isInCart" @click="$emit('add-to-cart', product)" class="btn btn-info form-control">{{ isInCart ? 'Added to Cart' : 'Add to Cart' }}</button>
-            </div><!-- End of Adding btns -->
+                <button :disabled="isInCart" 
+                        @click="$emit('add-to-cart', product)"
+                        class="btn btn-info form-control">
+                        {{ isInCart ? 'Added to Cart' : 'Add to Cart' }}
+                </button>
+            </div><!-- End of Adding btn -->
         </div>
     </div><!-- End of card content -->
 </template>
