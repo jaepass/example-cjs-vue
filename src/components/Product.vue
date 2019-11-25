@@ -1,4 +1,4 @@
-<!-- Products in wishlist -->
+<!-- Products -->
 <template>
     <div class="card my-5" style="height:41rem;">
         <div class="card-body">

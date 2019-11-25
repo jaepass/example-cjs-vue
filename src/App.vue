@@ -3,7 +3,7 @@
 
     <nav>
         <a href="/example-cjs-vue/#shopping-cart"><img width="32px" src="@/assets/bag-icon.svg" alt="shopping bag icon"></a>
-        <h1>{{ cart.length }}</h1>
+        <p v-if="cart.length >= 1">{{ cart.length }}</p>
     </nav>
 
     <div class="container mx-auto px-4">
@@ -14,55 +14,59 @@
           <!-- :key is for Vue to keep track of items with ids -->
             <div class="col-sm-4" v-for="product in products" :key="product.id">
               <!-- Bind product to cart -->
-              <product  :isInCart="isInCart(product)"
-                        v-on:add-to-cart="addToCart(product)"
-                        :product="product" />  
+              <product  :product="product"
+                        @add-to-cart="addToCart(product)"
+                        :isInCart="isInCart(product)"
+                         />  
             </div><!-- END Product Catalogue -->
           </div>
         </div>
 
+        <!-- Shopping Cart container -->
         <div class="cart">
-          <!-- Cart container -->
           <div class="col-md-5 my-5" id="shopping-cart">
-            <cart v-on:pay="pay()" v-on:remove-from-cart="removeFromCart($event)" :items="cart"></cart>
+            <cart :items="cart"
+                  @remove-from-cart="removeFromCart($event)"
+                  @pay="pay()" />
           </div>
         </div><!-- END Cart Container -->
 
       </div><!-- END of App Container -->
-      
-    </div>
+    </div><!-- END of Storefront -->
 </template>
 
 <script>
-import Commerce from '@chec.io/commerce';
-
 import Product from "@/components/Product.vue";
 import Cart from "@/components/Cart.vue";
-
-// Initialize store with public key, store key in variable
-const commerce = new Commerce('pk_17054571618e73520760e522b00e08ee196503b14e95c', true);
+// import Checkout from "@/components/Checkout.vue";
 
 export default {
   name: "app",
   components: {
     Product, 
     Cart, 
+    // Checkout
+  },
+  props: {
+    commerce: {
+      required: true,
+      type: Object
+    }
   },
   data() {
     return {
-      cart: [],
-      products: []
+      products: {},
+      cart: []
     };
   },
 
   //When Vue app is created, run these functions to fetch data from API
   created() {
-
     //List all products from store 
-    commerce.products.list()
+    this.commerce.products.list()
       .then((resp) => {
         //Successful response
-        this.products = resp.data
+        this.products = resp.data;
       })
       //Error
       .catch((error) => {
@@ -70,27 +74,18 @@ export default {
       });
 
       // invoke commerce cart method to retrieve cart in session
-      commerce.Cart.retrieve((cart) => {
+      this.commerce.cart.retrieve((cart) => {
         if (!cart.error) {
-          this.cart = cart;
+          this.cart = cart
         }
       });
-   
-    //Will use cart id in current session
-    // Commerce.Cart.retrieve((resp) => { 
-    //   return resp;
-    // });
   },
-  
   //Declare action methods on object
   methods: {
-    //Cart methods
 
     //Add products to cart
     addToCart(product) {
-      // this.cart.push(product);
       this.cart.push(product);
-      return product;
     },
     isInCart(product) {
       const item = this.cart.find(item => item.id === product.id);
@@ -105,10 +100,6 @@ export default {
     },
     // pay(){
     //   this.cart = [];
-    //   this.checkout = [];
-    // },
-    // openCheckoutModal(){
-
     // },
   },
   computed: {
@@ -134,16 +125,17 @@ p, a{
 }
 
 nav{
-  border: 1px solid red;
-}
-
-nav img{
   display: flex;
   position: fixed;
   top: 20px;
   right: 40px;
   z-index: 999;
 }
+
+nav p{
+  padding-top: 5px;
+}
+
 
 .cart{
   display: flex;

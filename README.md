@@ -1,10 +1,11 @@
-# Demo Store built in Vuejs with Commerce.js API with Cart integration
+# Bare-boned Demo Store built in Vuejs with Commerce.js API
+# Display products, add products, cart and checkout integration
 
-![Demo Image](timeless-storefront.png)
+<!-- ![Demo Image](timeless-storefront.png) -->
 
 ### Visit Live Site
 
-https://jaepass.github.io/demostore-vue2/
+https://jaepass.github.io/example-cjs-vue/
 
 ## Project setup
 ```
