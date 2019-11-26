@@ -17,7 +17,7 @@
       :disabled="items.length === 0"
       @click="$emit('pay')"
       class="btn btn-info form-control"
-    >Pay Now</button>
+    >Checkout</button>
   </div>
 </template>
 
@@ -28,10 +28,6 @@ export default {
       cartTotal() {
           return this.items.reduce((acc, item) => acc + Number(item.price.formatted), 0);
       },
-      //NOT USING
-      // cartCount() {
-      //     return this.items.reduce((acc) => acc += 1, 0);
-      // }
     },
 };
 </script>

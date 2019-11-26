@@ -2,7 +2,7 @@
   <div class="storefront">
     <nav>
         <a href="/example-cjs-vue/#shopping-cart"><img width="32px" src="@/assets/bag-icon.svg" alt="shopping bag icon"></a>
-        <p v-if="cartItems.length >= 1">{{ cartItems.total_items }}</p>
+        <p v-if="cartItems.length >= 1">{{ cart.total_items }}</p>
     </nav>
 
     <div class="container mx-auto px-4">
@@ -105,7 +105,7 @@ export default {
           this.cart = resp.cart;
         }
       })
-    }
+    },
 
     // removeFromCart(product) {
     //   this.cart = this.cart.filter(item => item.id !== product.id);
@@ -113,26 +113,14 @@ export default {
     // pay(){
     //   this.cart = [];
     // },
-    // checkout() {
-    //   if (this.cart.total_items > 0) {
-    //     this.commerce.Checkout
-    //       .generateToken(this.cart.id, { type: 'cart' },
-    //         (checkout) => {
-    //           this.checkout = checkout;
-    //         },
-    //         function(error) {
-    //           console.log('Error:', error)
-    //         })
-    //   }
-    // },
+    checkout() {
+      this.commerce.Checkout.generateToken(this.cart.id, { type: 'cart' },
+          (checkout) => {
+            this.checkout = checkout;
+          },
+    )},
   },
   computed: {
-    // cartCount(){
-    //   return {
-    //     count: this.count, 
-    //     ...this.cart
-    //   }
-    // },
     cartItems() {
       return this.cart ? this.cart.line_items : []
     }
