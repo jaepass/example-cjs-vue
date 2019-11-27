@@ -27,7 +27,15 @@
           <div class="col-md-5 my-5" id="shopping-cart">
             <cart :items="cartItems"
                   @remove-from-cart="removeFromCart"
-                  @pay="pay()" />
+                  @update-cart="updateCart"
+                  @checkout="checkout()" />
+          </div>
+        </div><!-- END Cart Container -->
+
+        <!-- Checkout Form -->
+        <div class="checkout">
+          <div class="col-md-5 my-5" id="shopping-cart">
+            <checkout :checkout="checkout" />
           </div>
         </div><!-- END Cart Container -->
 
@@ -94,6 +102,7 @@ export default {
       })
     },
 
+    //Check if product added matches item to update "added to cart" change on product card
     isInCart(product) {
       const item = this.cartItems.find(item => item.id === product.id);
       if (item) {
@@ -102,6 +111,7 @@ export default {
       return false;
     },
 
+    //Invoke remove from cart method
     removeFromCart(lineItemId){
       this.commerce.cart.remove(lineItemId, (resp) => {
         if(!resp.error){
@@ -110,18 +120,48 @@ export default {
       })
     },
 
+    //Update items in cart
+    // updateCart(product) {
+    //   const item = this.cartItems.find(item => item.id === product.id);
+    //   if (item) {
+    //     return true;
+    //   }
+    //   return false;
+    // },
+    
+    refreshCart(){
+      this.commerce.cart.refresh((resp) => {
+        // Error
+        if(!resp.error){
+          this.cart = resp.cart;
+        }
+      })
+    },
+
     // removeFromCart(product) {
-    //   this.cart = this.cart.filter(item => item.id !== product.id);
+    //   this.commerce.cart = this.cart.filter(item => item.id !== product.id);
     // },
     // pay(){
     //   this.cart = [];
     // },
-    checkout() {
-      this.commerce.Checkout.generateToken(this.cart.id, { type: 'cart' },
-          (checkout) => {
-            this.checkout = checkout;
-          },
-    )},
+
+    //Create a checkout token to represent customer's order before before it has been placed/captured
+    // checkout() {
+    //   this.commerce.checkout.generateToken(this.cart.id, { type: 'cart' },
+    //       (checkout) => {
+    //         this.checkout = checkout;
+    //       },
+    // )},
+
+    checkout(){
+      this.commerce.checkout.generateToken(this.cart.id, {type: 'cart'}).then((resp) => {
+        this.checkout = resp.checkout;
+      })
+      .catch((error) => {
+        alert(error);
+      });
+    }
+
   },
   computed: {
     cartItems() {

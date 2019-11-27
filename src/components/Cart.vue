@@ -15,7 +15,7 @@
 
     <button
       :disabled="items.length === 0"
-      @click="$emit('pay')"
+      @click="$emit('checkout')"
       class="btn btn-info form-control"
     >Checkout</button>
   </div>
