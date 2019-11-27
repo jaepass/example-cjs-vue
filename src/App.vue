@@ -4,6 +4,7 @@
         <a href="/example-cjs-vue/#shopping-cart"><img width="32px" src="@/assets/bag-icon.svg" alt="shopping bag icon"></a>
         <p v-if="cartItems.length >= 1">{{ cart.total_items }}</p>
     </nav>
+    <p>{{message.text}}</p>
 
     <div class="container mx-auto px-4">
       <div class="flex mb-4">
@@ -55,6 +56,7 @@ export default {
   data() {
     return {
       products: [],
+      message: {},
       cart: null,
     };
   },
@@ -72,9 +74,9 @@ export default {
       });
 
     // invoke commerce cart method to retrieve cart in session
-    this.commerce.cart.retrieve().then((cart) => {
-      if (!cart.error) {
-        this.cart = cart
+    this.commerce.cart.retrieve().then((resp) => {
+      if (!resp.error) {
+        this.cart = resp;
       }
     });
   },
@@ -87,7 +89,8 @@ export default {
         id: product.id,
         quantity: 1,
       }).then(response => {
-        this.cart = response.cart
+        this.cart = response.cart;
+        //alert("added to cart!")
       })
     },
 
