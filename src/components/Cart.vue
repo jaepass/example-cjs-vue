@@ -15,7 +15,7 @@
 
     <button
       :disabled="items.length === 0"
-      @click="$emit('checkout')"
+      @click="$emit('generate-checkout')"
       class="btn btn-info form-control"
     >Checkout</button>
   </div>

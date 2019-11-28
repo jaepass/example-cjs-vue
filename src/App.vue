@@ -4,7 +4,7 @@
         <a href="/example-cjs-vue/#shopping-cart"><img width="32px" src="@/assets/bag-icon.svg" alt="shopping bag icon"></a>
         <p v-if="cartItems.length >= 1">{{ cart.total_items }}</p>
     </nav>
-    <p>{{message.text}}</p>
+    <!-- <p>{{message.text}}</p> -->
 
     <div class="container mx-auto px-4">
       <div class="flex mb-4">
@@ -16,28 +16,37 @@
               <!-- Bind product to cart -->
               <product  :product="product"
                         @add-to-cart="addToCart(product)"
-                        :isInCart="isInCart(product)"
-                         />  
+                        :isInCart="isInCart(product)"/>  
             </div><!-- END Product Catalogue -->
           </div>
         </div>
 
-        <!-- Shopping Cart container -->
-        <div class="cart">
-          <div class="col-md-5 my-5" id="shopping-cart">
-            <cart :items="cartItems"
-                  @remove-from-cart="removeFromCart"
-                  @update-cart="updateCart"
-                  @checkout="checkout()" />
-          </div>
-        </div><!-- END Cart Container -->
+        <div class="cart-checkout row">
 
-        <!-- Checkout Form -->
-        <div class="checkout">
-          <div class="col-md-5 my-5" id="shopping-cart">
-            <checkout :checkout="checkout" />
-          </div>
-        </div><!-- END Cart Container -->
+          <!-- Shopping Cart container -->
+          <div class="cart">
+            <div class="col-sm-4 my-5" id="shopping-cart">
+              <cart :items="cartItems"
+                    @remove-from-cart="removeFromCart"
+                    @generate-checkout="generateCheckout()" />
+            </div>
+          </div><!-- END Cart Container -->
+
+          <!-- Checkout Form -->
+          <div v-if="checkout" class="checkout">
+            <div class="col-sm-8 my-5" id="checkoutForm">
+              <checkout :checkout="checkout"
+                        :commerce="commerce"
+                        @confirm-order="confirmOrder" />
+            </div>
+          </div><!-- END Checkout form -->
+
+        </div><!-- END Cart/Checkout Container -->
+
+        <!-- Order Confirmation Receipt -->
+
+        <!-- END Order Confirmation Receipt Container -->
+    
 
       </div><!-- END of App Container -->
     </div><!-- END of Storefront -->
@@ -46,14 +55,14 @@
 <script>
 import Product from "@/components/Product.vue";
 import Cart from "@/components/Cart.vue";
-// import Checkout from "@/components/Checkout.vue";
+import Checkout from "@/components/Checkout.vue";
 
 export default {
   name: "app",
   components: {
     Product, 
     Cart, 
-    // Checkout
+    Checkout
   },
   props: {
     commerce: {
@@ -66,11 +75,13 @@ export default {
       products: [],
       message: {},
       cart: null,
+      checkout: null
     };
   },
 
   //When Vue app is created, run these functions to fetch data from API
   created() {
+
     //List all products from store 
     this.commerce.products.list().then((resp) => {
         //Successful response
@@ -81,7 +92,7 @@ export default {
           alert(error);
       });
 
-    // invoke commerce cart method to retrieve cart in session
+    //Invoke commerce cart method to retrieve cart in session
     this.commerce.cart.retrieve().then((resp) => {
       if (!resp.error) {
         this.cart = resp;
@@ -145,21 +156,19 @@ export default {
     //   this.cart = [];
     // },
 
-    //Create a checkout token to represent customer's order before before it has been placed/captured
-    // checkout() {
-    //   this.commerce.checkout.generateToken(this.cart.id, { type: 'cart' },
-    //       (checkout) => {
-    //         this.checkout = checkout;
-    //       },
-    // )},
-
-    checkout(){
-      this.commerce.checkout.generateToken(this.cart.id, {type: 'cart'}).then((resp) => {
-        this.checkout = resp.checkout;
+    //Create a checkout token to represent customer's order (Capture the order to process in checkout)
+    generateCheckout(){
+      this.commerce.checkout.generateToken(this.cart.id, {type: 'cart'}).then((checkout) => {
+        this.checkout = checkout;
       })
       .catch((error) => {
         alert(error);
       });
+    },
+    
+    //Capture Order
+    confirmOrder(){
+
     }
 
   },
@@ -194,10 +203,13 @@ nav p{
   padding-top: 5px;
 }
 
-
-.cart{
+.cart-checkout{
+  border: 1px solid red;
   display: flex;
-  justify-content: space-between;
 }
+
+/* .cart{
+
+} */
 
 </style>
