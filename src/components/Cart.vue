@@ -14,7 +14,7 @@
       </div>
 
     <button
-      :disabled="items.length === 0"
+      v-if="items.length >= 1"
       @click="$emit('generate-checkout')"
       class="btn btn-info form-control"
     >Checkout</button>

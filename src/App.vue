@@ -24,7 +24,7 @@
         <div class="cart-checkout">
           <!-- Cart container -->
           <div class="cart">
-            <div class="my-5" id="cart">
+            <div class="my-5">
               <cart :items="cartItems"
                     @remove-from-cart="removeFromCart"
                     @generate-checkout="generateCheckout()" />
@@ -32,12 +32,10 @@
           </div><!-- END Cart Container -->
 
           <!-- Checkout Form -->
-          <div v-if="checkout" class="checkout">
-            <div class="my-5" id="checkoutForm">
+          <div v-if="checkout" class="checkout round-lg py-5 px-4 shadow-sm bg-white rounded">
               <checkout :checkout="checkout"
                         :commerce="commerce"
                         @confirm-order="confirmOrder" />
-            </div>
           </div><!-- END Checkout form -->
         </div><!-- END Cart/Checkout Container -->
 
@@ -202,10 +200,19 @@ nav p{
 }
 
 .cart-checkout{
-  border: 1px solid red;
   display: flex;
   justify-content: space-between;
 }
+
+.checkout{
+  box-shadow: 0 0 10px rgb(223, 223, 223); 
+}
+
+  @media only screen and (max-width: 400px){
+    .cart-checkout{
+      display: block;
+    }
+  }
 
 /* .cart{
 

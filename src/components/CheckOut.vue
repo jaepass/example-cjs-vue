@@ -2,46 +2,46 @@
     <div class="checkout-wrapper">
         <h3>Checkout</h3>
         <form>
-            <h4>Customer Information</h4>
+            <h4 class="mt-5 pt-3 border-top">Customer Information</h4>
 
-                <label for="firstName">First Name</label>
-                <input type="text" v-model="customerData.personal.firstName" name="firstName" placeholder="Enter your first name" required />
+                <label class="d-block pt-3" for="firstName">First Name</label>
+                <input class="p-1" type="text" v-model="customerData.personal.firstName" name="firstName" placeholder="Enter your first name" required />
 
-                <label for="lastName">Last Name</label>
-                <input type="text" v-model="customerData.personal.lastName" name="lastName" placeholder="Enter your last name" required />
+                <label class="d-block pt-3" for="lastName">Last Name</label>
+                <input class="p-1" type="text" v-model="customerData.personal.lastName" name="lastName" placeholder="Enter your last name" required />
 
-                 <label for="lastName">Email</label>
-                <input type="text" v-model="customerData.personal.email" name="email" placeholder="Enter your email" required />
+                 <label class="d-block pt-3" for="lastName">Email</label>
+                <input class="p-1" type="text" v-model="customerData.personal.email" name="email" placeholder="Enter your email" required />
 
-            <h4>Shipping Details</h4>
+            <h4 class="mt-5 pt-3 border-top">Shipping Details</h4>
 
-                <label for="streetAddress">Street Address</label>
-                <input type="text" v-model="customerData.shipping.streetAddress" name="shipping[street-address]" placeholder="Enter your street address" required />
+                <label class="d-block pt-3" for="streetAddress">Street Address</label>
+                <input class="p-1" type="text" v-model="customerData.shipping.streetAddress" name="shipping[street-address]" placeholder="Enter your street address" required />
 
-                <label for="city">City</label>
-                <input type="text" v-model="customerData.shipping.city" name="shipping[city]" placeholder="Enter your city" required />
+                <label class="d-block pt-3" for="city">City</label>
+                <input class="p-1" type="text" v-model="customerData.shipping.city" name="shipping[city]" placeholder="Enter your city" required />
 
-                <label for="city">Postal Code/Zip Code</label>
-                <input type="text" v-model="customerData.shipping.postalZip" name="shipping[postal-zip]" placeholder="Enter your postal or zip code" required />
+                <label class="d-block pt-3" for="city">Postal Code/Zip Code</label>
+                <input class="p-1" type="text" v-model="customerData.shipping.postalZip" name="shipping[postal-zip]" placeholder="Enter your postal or zip code" required />
 
-                <label for="city">Country</label>
-                <input type="text" v-model="customerData.shipping.country" name="shipping[country]" placeholder="Enter your country" required />
+                <label class="d-block pt-3" for="city">Country</label>
+                <input class="p-1" type="text" v-model="customerData.shipping.country" name="shipping[country]" placeholder="Enter your country" required />
 
-            <h4>Payment Information</h4>
+            <h4 class="mt-5 pt-3 border-top">Payment Information</h4>
 
-                <label for="cardNum">Credit Card Number</label>
-                <input type="text" name="payment[card-num]" v-model="customerData.payment.cardNum" placeholder="Enter your card number" />
+                <label class="d-block pt-3" for="cardNum">Credit Card Number</label>
+                <input class="p-1" type="text" name="payment[card-num]" v-model="customerData.payment.cardNum" placeholder="Enter your card number" />
 
-                <label for="expMonth">Expiry Month</label>
-                <input type="text" name="payment[exp-month]" v-model="customerData.payment.expMonth" placeholder="Card expiry month" />
+                <label class="d-block pt-3" for="expMonth">Expiry Month</label>
+                <input class="p-1" type="text" name="payment[exp-month]" v-model="customerData.payment.expMonth" placeholder="Card expiry month" />
 
-                <label for="expYear">Expiry Year</label>
-                <input type="text" name="payment[exp-year]" v-model="customerData.payment.expYear" placeholder="Card expiry year" />
+                <label class="d-block pt-3" for="expYear">Expiry Year</label>
+                <input class="p-1" type="text" name="payment[exp-year]" v-model="customerData.payment.expYear" placeholder="Card expiry year" />
 
-                <label for="ccv">CCV</label>
-                <input type="text" name="payment[ccv]" v-model="customerData.payment.ccv" placeholder="CCV (3 digits)" />
+                <label class="d-block pt-3" for="ccv">CCV</label>
+                <input class="p-1" type="text" name="payment[ccv]" v-model="customerData.payment.ccv" placeholder="CCV (3 digits)" />
 
-            <button class="btn btn-info form-control" @click.prevent="confirmOrder()">Confirm Order</button>
+            <button class="mt-5 py-2 form-control confirm-btn" @click.prevent="confirmOrder()">Confirm Order</button>
             
         </form>
     </div>
@@ -92,5 +92,14 @@ export default {
 </script>
 
 <style>
+
+.confirm-btn{
+    background-color: black;
+    color: white;
+    letter-spacing: 2.75px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+}
 
 </style>
