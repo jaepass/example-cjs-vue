@@ -21,11 +21,10 @@
           </div>
         </div>
 
-        <div class="cart-checkout row">
-
-          <!-- Shopping Cart container -->
+        <div class="cart-checkout">
+          <!-- Cart container -->
           <div class="cart">
-            <div class="col-sm-4 my-5" id="shopping-cart">
+            <div class="my-5" id="cart">
               <cart :items="cartItems"
                     @remove-from-cart="removeFromCart"
                     @generate-checkout="generateCheckout()" />
@@ -34,13 +33,12 @@
 
           <!-- Checkout Form -->
           <div v-if="checkout" class="checkout">
-            <div class="col-sm-8 my-5" id="checkoutForm">
+            <div class="my-5" id="checkoutForm">
               <checkout :checkout="checkout"
                         :commerce="commerce"
                         @confirm-order="confirmOrder" />
             </div>
           </div><!-- END Checkout form -->
-
         </div><!-- END Cart/Checkout Container -->
 
         <!-- Order Confirmation Receipt -->
@@ -206,6 +204,7 @@ nav p{
 .cart-checkout{
   border: 1px solid red;
   display: flex;
+  justify-content: space-between;
 }
 
 /* .cart{
