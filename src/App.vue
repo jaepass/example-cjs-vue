@@ -23,7 +23,7 @@
 
         <div class="cart-checkout">
           <!-- Cart container -->
-          <div class="cart">
+          <div class="cart px-5">
             <div class="my-5">
               <cart :items="cartItems"
                     @remove-from-cart="removeFromCart"
@@ -32,7 +32,7 @@
           </div><!-- END Cart Container -->
 
           <!-- Checkout Form -->
-          <div v-if="checkout" class="checkout round-lg py-5 px-4 shadow-sm bg-white rounded">
+          <div v-if="checkout" class="checkout round-lg py-4 px-4 shadow-sm bg-white rounded mb-10">
               <checkout :checkout="checkout"
                         :commerce="commerce"
                         @confirm-order="confirmOrder" />
@@ -183,8 +183,13 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-p, a{
+p, a, label, input, h2, h3, h4{
   letter-spacing: 2px;
+}
+
+h4{
+  text-transform: uppercase;
+  font-size: 18px;
 }
 
 nav{
@@ -201,11 +206,12 @@ nav p{
 
 .cart-checkout{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .checkout{
-  box-shadow: 0 0 10px rgb(223, 223, 223); 
+  box-shadow: 0 0 10px rgb(223, 223, 223);
+  width: 500px; 
 }
 
   @media only screen and (max-width: 400px){

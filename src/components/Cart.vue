@@ -1,7 +1,7 @@
 <template>
     <div class="cart-wrapper">
       <ul class="list-group">
-        <div v-if="items.length >= 1"><h2>Shopping Cart</h2></div>
+        <div v-if="items.length >= 1"><h3 class="pb-3">Shopping Cart</h3></div>
         <li class="list-group-item item-name" v-for="item in items" :key="item.id">
           {{ item.name }} <span class="text-center">{{ item.price.formatted_with_symbol }}</span>
           <button @click="$emit('remove-from-cart', item.id)"
@@ -16,7 +16,7 @@
     <button
       v-if="items.length >= 1"
       @click="$emit('generate-checkout')"
-      class="btn btn-info form-control"
+      class="checkout-btn form-control"
     >Checkout</button>
   </div>
 </template>
@@ -35,6 +35,15 @@ export default {
 <style>
 .cart-wrapper h2{
   padding-bottom: 15px;
+}
+
+.checkout-btn{
+    background-color: black;
+    color: white;
+    letter-spacing: 2.75px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 </style>
