@@ -77,10 +77,16 @@ export default {
             }
         }
     },
-    
- 
+    methods: {
+        confirmOrder () {
 
-
+            const confirmedOrder = 
+                this.customerData.personal;
+                this.customerData.shipping;
+                this.customerData.payment;
+                this.$emit('capture-order', this.checkout.id, confirmedOrder)
+        }
+    }
 }
 
 </script>
