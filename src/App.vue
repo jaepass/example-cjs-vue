@@ -69,9 +69,10 @@ export default {
   data() {
     return {
       products: [],
-      message: {},
+      // message: {},
       cart: null,
-      checkout: null
+      checkout: null,
+      order: null
     };
   },
 
@@ -127,6 +128,15 @@ export default {
       })
     },
 
+    
+        // removeFromCart(product) {
+        //   this.commerce.cart = this.cart.filter(item => item.id !== product.id);
+        // },
+        // pay(){
+        //   this.cart = [];
+        // },
+
+
     //Update items in cart
     // updateCart(product) {
     //   const item = this.cartItems.find(item => item.id === product.id);
@@ -145,14 +155,8 @@ export default {
       })
     },
 
-    // removeFromCart(product) {
-    //   this.commerce.cart = this.cart.filter(item => item.id !== product.id);
-    // },
-    // pay(){
-    //   this.cart = [];
-    // },
 
-    //Create a checkout token to represent customer's order (Capture the order to process in checkout)
+    //Create a checkout token to represent customer's order (returns Checkout id if successful)
     generateCheckout(){
       this.commerce.checkout.generateToken(this.cart.id, {type: 'cart'}).then((checkout) => {
         this.checkout = checkout;
@@ -162,9 +166,17 @@ export default {
       });
     },
     
-    //Capture Order
-    confirmOrder(){
-
+    //Capture Order (returns order object if successful)
+    confirmOrder(checkoutId, order){
+      this.commerce.checkout.capture(checkoutId, order,
+        (resp) => {
+          this.refreshCart()
+          this.checkout = null;
+          this.order = resp;
+        })
+        .catch((error) => {
+        alert(error);
+      });
     }
 
   },

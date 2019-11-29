@@ -27,6 +27,14 @@
                 <label class="d-block pt-3" for="city">Country</label>
                 <input class="p-1 form-control" type="text" v-model="customerData.shipping.country" name="shipping[country]" placeholder="Enter your country" required />
 
+                <label class="d-block pt-3" for="city">Shipping Option</label>
+
+
+                <select v-if="shippingOptions" v-model="shippingOption" name="shippingOption" class="db mb2">
+                <option value="" disabled>Choose a shipping method</option>
+                <option v-for="option of shippingOptions" :value="option.id" :key="option.id">{{ `${option.description} - $${option.price.formatted_with_code}` }}</option>
+            </select>
+
             <h4 class="mt-5 pt-3 border-top">Payment Information</h4>
 
                 <label class="d-block pt-3" for="cardNum">Credit Card Number</label>
@@ -67,6 +75,8 @@ export default {
                     city: 'Vancouver',
                     postalZip: 'V1A 2B3',
                     country: 'Canada',
+                    shippingOption: '',
+                    // shippingOptions: []
                 },
                 payment: {
                     cardNum: '4242 4242 4242 4242',
@@ -84,7 +94,7 @@ export default {
                 this.customerData.personal;
                 this.customerData.shipping;
                 this.customerData.payment;
-                this.$emit('capture-order', this.checkout.id, confirmedOrder)
+                this.$emit('confirm-order', this.checkout.id, confirmedOrder)
         }
     }
 }
