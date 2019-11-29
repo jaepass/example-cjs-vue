@@ -4,7 +4,7 @@
         <div v-if="items.length >= 1"><h3 class="pb-3">Shopping Cart</h3></div>
         <li class="list-group-item item-name" v-for="item in items" :key="item.id">
           {{ item.name }} <span class="text-center">{{ item.price.formatted_with_symbol }}</span>
-          <button @click="$emit('remove-from-cart', items.id)"
+          <button @click="$emit('remove-from-cart', item.id)"
                   class="bg-transparent py-2 px-4 border hover:border-transparent rounded float-right">Remove</button>
         </li>
       </ul>
@@ -23,6 +23,7 @@
 <script>
 export default {
     props: ["items"],
+
     computed: {
       cartTotal() {
           return this.items.reduce((acc, item) => acc + Number(item.price.formatted), 0);
