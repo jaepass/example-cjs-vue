@@ -1,16 +1,34 @@
 <template>
-  <div class="storefront">
-    <nav>
-        <a href="/example-cjs-vue/#shopping-cart"><img width="32px" src="@/assets/bag-icon.svg" alt="shopping bag icon"></a>
-        <p v-if="cartItems.length >= 1">{{ cart.total_items }}</p>
-    </nav>
-    <!-- <p>{{message.text}}</p> -->
 
+  <!-- Hero section -->
+  <div>
+    <div class="hero-wrapper">
+            <div class="hero-img-1">
+                <div class="logo" href="/">
+                    <img width="175px" src="@/assets/logo.png" alt="Tribal Logo">
+                </div>
+                <div class="hero-text">
+                     <a href="/example-cjs-vue/#shop"><p class="discover">discover</p></a>
+                     <p>classic timepieces</p>
+                </div>
+            </div>
+
+            <nav>
+                <div class="nav-items">
+                <a href="/example-cjs-vue/#cart"><img width="32px" src="@/assets/shopcart-icon.svg" alt="shopping bag icon"></a>
+                <p v-if="cartItems.length >= 1" class="text-white">{{ cart.total_items }}</p>
+              </div>
+          </nav>
+
+            <div class="hero-img-2"></div>
+            <div class="hero-img-3"></div>
+    </div>
+
+    <!-- Products catalogue -->
     <div class="container mx-auto px-4">
       <div class="flex mb-4">
-
           <div class="row" id="shop">
-          <!-- Loop through products and display -->
+          <!-- Loop through products and output -->
           <!-- :key is for Vue to keep track of items with ids -->
             <div class="col-sm-4" v-for="product in products" :key="product.id">
               <!-- Bind product to cart -->
@@ -23,7 +41,7 @@
 
         <div class="cart-checkout">
           <!-- Cart container -->
-          <div class="cart px-5">
+          <div class="cart px-5" id="cart">
             <div class="my-5">
               <cart :items="cartItems"
                     @remove-from-cart="removeFromCart"
@@ -32,7 +50,7 @@
           </div><!-- END Cart Container -->
 
           <!-- Checkout Form -->
-          <div v-if="checkout" class="checkout round-lg py-4 px-4 shadow-sm bg-white rounded mb-10">
+          <div v-if="checkout" class="checkout round-lg py-4 px-4 shadow-sm bg-white rounded mb-20">
               <checkout :checkout="checkout"
                         :commerce="commerce"
                         @confirm-order="confirmOrder" />
@@ -40,10 +58,8 @@
         </div><!-- END Cart/Checkout Container -->
 
         <!-- Order Confirmation Receipt -->
-
         <!-- END Order Confirmation Receipt Container -->
     
-
       </div><!-- END of App Container -->
     </div><!-- END of Storefront -->
 </template>
@@ -110,7 +126,7 @@ export default {
       })
     },
 
-    //Check if product added matches item to update "added to cart" change on product card
+    //Check if product added matches item to update "added to cart" on product card
     isInCart(product) {
       const item = this.cartItems.find(item => item.id === product.id);
       if (item) {
@@ -132,10 +148,6 @@ export default {
         // removeFromCart(product) {
         //   this.commerce.cart = this.cart.filter(item => item.id !== product.id);
         // },
-        // pay(){
-        //   this.cart = [];
-        // },
-
 
     //Update items in cart
     // updateCart(product) {
@@ -180,6 +192,7 @@ export default {
     }
 
   },
+  
   computed: {
     cartItems() {
       return this.cart ? this.cart.line_items : []
@@ -191,7 +204,6 @@ export default {
 
 <style>
 body {
-  background-color: #ffffff;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -204,16 +216,104 @@ h4{
   font-size: 18px;
 }
 
-nav{
-  display: flex;
-  position: fixed;
-  top: 20px;
-  right: 40px;
-  z-index: 999;
+.hero-wrapper {
+  display: grid;
+  grid-template-areas: 
+      "img1   nav"
+      "img1   img2"
+      "img1   img3";
+	grid-template-rows: 80px 1fr 1fr;
+	grid-template-columns: 55% auto;
+  grid-gap: 10px;
+  height: 100vh;
 }
 
-nav p{
-  padding-top: 5px;
+.hero-img-1{
+  background-image: url("./assets/hero-img.jpg");
+  grid-area: img1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.logo{
+  padding: 30px 0 0 30px;
+  cursor: pointer;
+}
+
+.logo img{
+  width: 120px;
+}
+
+.hero-text{
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.hero-text a{
+  text-decoration: none;
+}
+
+.hero-text p{
+  color: white;
+  text-transform: uppercase;
+}
+
+.discover{
+  color: white;
+  text-transform: uppercase;
+  border: 1.5px solid white;
+  padding: 9px 20px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.discover:hover{
+  color: #040034;
+  background-color: #fff;
+}
+
+
+nav{
+  grid-area: nav;
+  background: #040034;
+  background-size: cover;
+  /* position: relative; */
+  position: sticky;
+}
+
+.nav-items{
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  padding-top: 10px;
+  padding-right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-items a{
+  padding-left: 20px;
+  text-decoration: none;
+}
+
+.hero-img-2{
+  background-image: url("./assets/hero-img2.jpg");
+  grid-area: img2;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: contain;
+}
+
+.hero-img-3{
+  background-image: url("./assets/hero-img3.jpg");
+  grid-area: img3;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: contain;
 }
 
 .cart-checkout{
@@ -230,10 +330,10 @@ nav p{
     .cart-checkout{
       display: block;
     }
+
+    .checkout{
+      width: 325px; 
+    }
   }
-
-/* .cart{
-
-} */
 
 </style>

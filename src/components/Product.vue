@@ -1,13 +1,13 @@
 <!-- Products -->
 <template>
-    <div class="card my-5" style="height:41rem;">
+    <div class="card my-5 border-0" style="height:41rem;">
         <div class="card-body">
             <img :src="product.media.source" :alt="product.name" class="card-img-top"/>
-            <h4 class="title text-center card-title display-5">{{product.name}}</h4>
+            <h4 class="title text-center card-title display-5 pt-4">{{product.name}}</h4>
             <p class="description text-center card-text display-5" v-html="product.description"></p>
             <p class="text-center text-muted card-subtitle display-5 price">{{product.price.formatted_with_symbol}}</p>
             <!-- add to cart button -->
-            <div class="add-btns">
+            <div class="add-btns d-flex">
                 <button :disabled="isInCart" 
                         @click="$emit('add-to-cart', product)"
                         class="btn btn-info form-control">
@@ -27,10 +27,6 @@ export default{
 
 <style>
 
-    .card{
-        border: none;
-    }
-
     .card-body img{
         width: 80%;
         display: block;
@@ -38,16 +34,10 @@ export default{
     }
 
     .card h4{
-        padding-top: 20px;
         font-size: 17px;
         font-weight: 700;
         letter-spacing: 2.25px;
         line-height: 32px;
-    }
-
-
-    .add-btns{
-        display: flex;
     }
 
     button.btn{
@@ -55,26 +45,11 @@ export default{
         text-decoration: underline;
         border: none;
         color: rgb(60, 60, 60);
-        transition: all 0.3s ease-in-out;
     }
     button.btn:hover{
         text-decoration: none;
         background-color: transparent;
         color: #040034;
-    }
-
-    button img{
-        padding-right: 7px;
-    }
-
-    @media only screen and (max-width: 400px){
-        .card{
-            height: 48rem;
-        }
-
-        .add-btns{
-            display: block;
-        }
     }
 
 </style>
