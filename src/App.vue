@@ -107,10 +107,16 @@ export default {
 
     //Invoke commerce cart method to retrieve cart in session
     this.commerce.cart.retrieve().then((resp) => {
-      if (!resp.error) {
-        this.cart = resp;
-      }
-    });
+      // if (!resp.error) {
+      //   this.cart = resp;
+      // }
+      //Successful response
+      this.cart = resp;
+    })
+    //Error
+    .catch((error) => {
+      alert(error);
+    })
   },
   //Declare action methods on object
   methods: {
@@ -122,7 +128,6 @@ export default {
         quantity: 1,
       }).then(response => {
         this.cart = response.cart;
-        //alert("added to cart!")
       })
     },
 
@@ -137,17 +142,15 @@ export default {
 
     //Invoke remove from cart method
     removeFromCart(lineItemId){
-      this.commerce.cart.remove(lineItemId, (resp) => {
-        if(!resp.error){
-          this.cart = resp.cart;
-        }
+      this.commerce.cart.remove(lineItemId)
+      .then(resp => {
+        this.cart = resp.cart;
       })
+      .catch((error) => {
+          alert(error);
+      });
     },
 
-    
-        // removeFromCart(product) {
-        //   this.commerce.cart = this.cart.filter(item => item.id !== product.id);
-        // },
 
     //Update items in cart
     // updateCart(product) {

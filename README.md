@@ -1,4 +1,4 @@
-# Bare-boned Demo Store built in Vuejs with Commerce.js API, Display products, add products, cart and checkout integration
+# Bare-boned Demo Store built in Vuejs with Commerce.js API, display products, add products, cart and checkout integration
 
 <!-- ![Demo Image](timeless-storefront.png) -->
 
