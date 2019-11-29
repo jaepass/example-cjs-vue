@@ -30,8 +30,8 @@
                 <label class="d-block pt-3" for="city">Shipping Option</label>
 
 
-                <select v-if="shippingOptions" v-model="shippingOption" name="shippingOption" class="db mb2">
-                <option value="" disabled>Choose a shipping method</option>
+                <select v-model="shippingOption" name="shippingOption" class="p-1">
+                <option value="" disabled>Select a shipping method</option>
                 <option v-for="option of shippingOptions" :value="option.id" :key="option.id">{{ `${option.description} - $${option.price.formatted_with_code}` }}</option>
             </select>
 
