@@ -107,17 +107,15 @@ export default {
 
     //Invoke commerce cart method to retrieve cart in session
     this.commerce.cart.retrieve().then((resp) => {
-      // if (!resp.error) {
-      //   this.cart = resp;
-      // }
       //Successful response
       this.cart = resp;
     })
-    //Error
-    .catch((error) => {
-      alert(error);
-    })
+      //Error
+      .catch((error) => {
+        alert(error);
+      })
   },
+
   //Declare action methods on object
   methods: {
 
@@ -142,10 +140,11 @@ export default {
 
     //Invoke remove from cart method
     removeFromCart(lineItemId){
-      this.commerce.cart.remove(lineItemId)
-      .then(resp => {
+      this.commerce.cart.remove(lineItemId).then(resp => {
+        //Successful
         this.cart = resp.cart;
       })
+      //Error
       .catch((error) => {
           alert(error);
       });
@@ -163,17 +162,19 @@ export default {
     
     refreshCart(){
       this.commerce.cart.refresh((resp) => {
-        // Error
-        if(!resp.error){
+        //Successful
           this.cart = resp.cart;
-        }
+      })
+      //Error
+      .catch((error) => {
+        alert(error)
       })
     },
-
 
     //Create a checkout token to represent customer's order (returns Checkout id if successful)
     generateCheckout(){
       this.commerce.checkout.generateToken(this.cart.id, {type: 'cart'}).then((checkout) => {
+        //Successful
         this.checkout = checkout;
       })
       .catch((error) => {
@@ -183,12 +184,13 @@ export default {
     
     //Capture Order (returns order object if successful)
     confirmOrder(checkoutId, order){
-      this.commerce.checkout.capture(checkoutId, order,
-        (resp) => {
-          this.refreshCart()
-          this.checkout = null;
-          this.order = resp;
-        })
+      this.commerce.checkout.capture(checkoutId, order).then((resp) => {
+        //Successful
+        this.refreshCart()
+        this.checkout = null;
+        this.order = resp;
+      })
+        //Error
         .catch((error) => {
         alert(error);
       });
