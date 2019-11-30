@@ -27,12 +27,16 @@
                 <label class="d-block pt-3" for="provinceState">Province/State</label>
                 <input class="p-1 form-control" type="text" v-model="provinceState" name="provinceState" placeholder="Select your province/state" required />
 
-                <label class="d-block pt-3" for="postalZip">Postal Code/Zip Code</label>
-                <input class="p-1 form-control" type="text" v-model="postalZip" name="postalZip" placeholder="Enter your postal or zip code" required />
+                <select v-model="provinceState" name="provinceState" class="">
+                <option value="" disabled>Province/State</option>
+                <option v-for="(subdivisionName, subdivisionCode, index) of subdivisions" :value="subdivisionCode" :key="index">{{subdivisionName}}</option>
+                </select>
 
-
-                <label class="d-block pt-3" for="country">Country</label>
-                <input class="p-1 form-control" type="text" v-model="country" name="country" placeholder="Enter your country" required />
+                <select v-model="country" name="country" class="db mb2">
+                <option value="" disabled>Country</option>
+                <option v-for="(countryName, index) of shippingCountries" :value="countryCode" :key="index">{{countryName}}</option>
+                </select>
+                
 
                 <label class="d-block pt-3" for="city">Shipping Option</label>
                 <select v-model="shippingMethod" name="shippingMethod" class="p-1">
@@ -66,6 +70,11 @@ export default {
     name: 'checkout',
     props: ['commerce', 'checkout'],
 
+    created(){
+         this.getshippingCountries()
+         this.getRegions(this.country)
+    },
+
     data(){
         return{
             //Handle customer input
@@ -73,7 +82,7 @@ export default {
             customerLastName: 'Doe',
             customerEmail: 'janedoe@email.com',
             //Handle shipping input
-            shippingName: '',
+            shippingName: 'Jane Doe',
             street: '123 Main St',
             city: 'Vancouver',
             provinceState: '',
@@ -88,10 +97,32 @@ export default {
             exMonth: '01',
             exYear: '2021',
             ccv: '123',
-            billingPostalZip: 'V1A 2B3'
+            billingPostalZip: 'V1A 2B3',
+            subdivisions: {},
+            shippingCountries: {}
         }
     },
     methods: {
+
+        getShippingCountries(){
+            this.commerce.services.localeListShippingCountries(this.checkout.id).then((resp) => 
+                //Success
+                this.shippingCountries = resp.countries
+            )
+            .catch((error) => {
+                alert(error)
+            })
+        },
+
+        getRegions(countryCode){
+            this.commerce.services.localeListShippingSubdivisions(this.checkout.id, countryCode).then((resp) => 
+                //Success
+                this.subdivisions = resp.subdivisions
+            )
+            .catch((error) => {
+                alert(error)
+            })
+        },
 
         confirmOrder(){
             const confirmedOrder = {
