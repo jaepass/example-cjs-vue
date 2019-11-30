@@ -15,6 +15,9 @@
 
             <h4 class="mt-5 pt-3 border-top">Shipping Details</h4>
 
+                <label class="d-block pt-3" for="street">Full Name</label>
+                <input class="p-1 form-control" type="text" v-model="shippingName" name="shippingName" placeholder="Enter your shipping full name" required />
+
                 <label class="d-block pt-3" for="street">Street Address</label>
                 <input class="p-1 form-control" type="text" v-model="street" name="street" placeholder="Enter your street address" required />
 
@@ -70,6 +73,7 @@ export default {
             customerLastName: 'Doe',
             customerEmail: 'janedoe@email.com',
             //Handle shipping input
+            shippingName: '',
             street: '123 Main St',
             city: 'Vancouver',
             provinceState: '',
@@ -98,6 +102,7 @@ export default {
                     email: this.customerEmail
                 },
                 shipping: {
+                    name: this.shippingName,
                     street: this.street,
                     town_city: this.city,
                     county_state: this.provinceState,
