@@ -61,6 +61,7 @@
         <!-- END Order Confirmation Receipt Container -->
     
       </div><!-- END of App Container -->
+      <Footer />
     </div><!-- END of Storefront -->
 </template>
 
@@ -69,12 +70,15 @@ import Product from "@/components/Product.vue";
 import Cart from "@/components/Cart.vue";
 import Checkout from "@/components/Checkout.vue";
 
+import Footer from "@/components/Footer.vue";
+
 export default {
   name: "app",
   components: {
     Product, 
     Cart, 
-    Checkout
+    Checkout,
+    Footer
   },
   props: {
     commerce: {

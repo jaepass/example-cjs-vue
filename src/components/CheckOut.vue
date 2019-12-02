@@ -24,24 +24,25 @@
                 <label class="d-block pt-3" for="city">City</label>
                 <input class="p-1 form-control" type="text" v-model="city" name="city" placeholder="Enter your city" required />
 
-                <label class="d-block pt-3" for="provinceState">Province/State</label>
-                <input class="p-1 form-control" type="text" v-model="provinceState" name="provinceState" placeholder="Select your province/state" required />
+                <label class="d-block pt-3" for="postalZip">Postal/Zip Code</label>
+                <input class="p-1 form-control" type="text" v-model="postalZip" name="postalZip" placeholder="Enter your postal/zip code" required />
 
-                <select v-model="provinceState" name="provinceState" class="">
-                <option value="" disabled>Province/State</option>
-                <option v-for="(subdivisionName, subdivisionCode, index) of subdivisions" :value="subdivisionCode" :key="index">{{subdivisionName}}</option>
-                </select>
-
-                <select v-model="country" name="country" class="db mb2">
+                <label class="d-block pt-3" for="postalZip">Country</label>
+                <select v-model="country" name="country" class="d-block pt-3">
                 <option value="" disabled>Country</option>
-                <option v-for="(countryName, index) of shippingCountries" :value="countryCode" :key="index">{{countryName}}</option>
+                <option v-for="(country, index) of shippingCountries" :value="index" :key="index">{{country}}</option>
                 </select>
                 
+                <label class="d-block pt-3" for="postalZip">Province/State</label>
+                <select v-model="provinceState" name="provinceState" class="d-block pt-3">
+                <option value="" disabled>Province/State</option>
+                <option v-for="(subdivision, index) of shippingSubdivisions" :value="index" :key="index">{{subdivision}}</option>
+                </select>
 
-                <label class="d-block pt-3" for="city">Shipping Option</label>
+                <label class="d-block pt-3" for="city">Shipping Method</label>
                 <select v-model="shippingMethod" name="shippingMethod" class="p-1">
                 <option value="" disabled>Select a shipping method</option>
-                <option v-for="option of shippingOptions" :value="option.id" :key="option.id">{{ `${option.description} - $${option.price.formatted_with_code}` }}</option>
+                <option v-for="method of shippingMethods" :value="method.id" :key="method.id">{{ `${method.description} - $${method.price.formatted_with_code}` }}</option>
             </select>
 
             <h4 class="mt-5 pt-3 border-top">Payment Information</h4>
@@ -70,11 +71,6 @@ export default {
     name: 'checkout',
     props: ['commerce', 'checkout'],
 
-    created(){
-         this.getshippingCountries()
-         this.getRegions(this.country)
-    },
-
     data(){
         return{
             //Handle customer input
@@ -85,27 +81,35 @@ export default {
             shippingName: 'Jane Doe',
             street: '123 Main St',
             city: 'Vancouver',
-            provinceState: '',
             postalZip: 'V1A 2B3',
+            provinceState: '',
             country: 'CA',
             //Handle fulfillment input
             shippingMethod: '',
             shippingMethods: [],
             shippingMethodsId: {},
+            shippingSubdivisions: {},
+            shippingCountries: {},
             //Handle payment input
             cardNum: '4242 4242 4242 4242',
             exMonth: '01',
             exYear: '2021',
             ccv: '123',
             billingPostalZip: 'V1A 2B3',
-            subdivisions: {},
-            shippingCountries: {}
+            
         }
     },
+
+    created(){
+         this.getShippingCountries()
+         this.getProvinceState(this.country)
+         this.getShippingMethods(this.checkout.id, this.country)
+    },
+
     methods: {
 
         getShippingCountries(){
-            this.commerce.services.localeListShippingCountries(this.checkout.id).then((resp) => 
+                this.commerce.services.localeListShippingCountries(this.checkout.id).then((resp) => 
                 //Success
                 this.shippingCountries = resp.countries
             )
@@ -114,14 +118,18 @@ export default {
             })
         },
 
-        getRegions(countryCode){
-            this.commerce.services.localeListShippingSubdivisions(this.checkout.id, countryCode).then((resp) => 
+        getProvinceState(selectedCountry){
+            this.commerce.services.localeListShippingSubdivisions(this.checkout.id, selectedCountry).then((resp) => 
                 //Success
-                this.subdivisions = resp.subdivisions
+                this.shippingSubdivisions = resp.subdivisions
             )
             .catch((error) => {
                 alert(error)
             })
+        },
+
+        getShippingMethods(){
+            this.commerce.checkout.getShippingOptions(this.checkout.id, { country: 'CA', region: 'BC' }).then(resp => this.shippingOptions = resp)
         },
 
         confirmOrder(){
