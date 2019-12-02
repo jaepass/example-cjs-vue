@@ -82,7 +82,7 @@ export default {
             street: '123 Main St',
             city: 'Vancouver',
             postalZip: 'V1A 2B3',
-            provinceState: '',
+            provinceState: 'BC',
             country: 'CA',
             //Handle fulfillment input
             shippingMethod: '',
@@ -118,8 +118,8 @@ export default {
             })
         },
 
-        getProvinceState(selectedCountry){
-            this.commerce.services.localeListShippingSubdivisions(this.checkout.id, selectedCountry).then((resp) => 
+        getProvinceState(){
+            this.commerce.services.localeListSubdivisions(this.country).then((resp) => 
                 //Success
                 this.shippingSubdivisions = resp.subdivisions
             )
@@ -129,7 +129,11 @@ export default {
         },
 
         getShippingMethods(){
-            this.commerce.checkout.getShippingOptions(this.checkout.id, { country: 'CA', region: 'BC' }).then(resp => this.shippingOptions = resp)
+            this.commerce.checkout.getShippingOptions(this.checkout.id, { country: 'CA', region: 'BC' }).then(response => this.shippingMethods = response
+            )
+            .catch((error) => {
+                alert(error)
+            })
         },
 
         confirmOrder(){

@@ -58,6 +58,14 @@
         </div><!-- END Cart/Checkout Container -->
 
         <!-- Order Confirmation Receipt -->
+        <div v-if="order" class="">
+          <h2 class="">
+            Thank you for shopping!
+          </h2>
+          <h4 class="">
+            Your order number is #{{order.id}}
+          </h4>
+        </div>
         <!-- END Order Confirmation Receipt Container -->
     
       </div><!-- END of App Container -->
@@ -89,7 +97,6 @@ export default {
   data() {
     return {
       products: [],
-      // message: {},
       cart: null,
       checkout: null,
       order: null
