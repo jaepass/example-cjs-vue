@@ -63,28 +63,28 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
   ```
 
 ### 2. Set up your Vue project:
-  - To create a new project, run:
+  1. To create a new project, run:
 
   ```
   vue create your-project-name
   ```
 
-  - Change directory into your project folder:
+  2. Change directory into your project folder:
   ```
   cd your-project-name
   ```
 
-  - Install dependencies required by the template (maybe brew yourself a nice cup of coffee while you wait):
+  3. Install dependencies required by the template (maybe brew yourself a nice cup of coffee while you wait):
   ```
   npm install
   ```
 
-  - Start your local http server and run development:
+  4. Start your local http server and run development:
   ```
   npm run serve
   ```
 
-
+### 
 
 ### Compiles and hot-reloads for development
 ```
