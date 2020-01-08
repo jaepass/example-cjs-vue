@@ -1,10 +1,12 @@
-# Bare-boned Demo Store built in Vuejs with Commerce.js API, display products, add products, cart and checkout integration
+# Create a single page product catalogue with Commerce.js and Vue.js
 
-<!-- ![Demo Image](timeless-storefront.png) -->
+![Demo Image](demo-img.png)
 
 ### Visit Live Site
 
 https://jaepass.github.io/example-cjs-vue/
+
+
 
 ## Project setup
 ```
