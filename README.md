@@ -9,7 +9,7 @@ For this guide, we will be creating a single page product display of a Chec stor
 
 What is Commerce.js you might ask? If this is your first foray into a Headless eCommerce project, please continue to read on! Another question might then be "What is headless eCommerce?" There are definitely a lot of sources out there explaining what exactly this "headless" concept means. When I first started my dev career at [Commerce.js](https://commercejs.com/), I did my fair share of digging and wrote up a [TL;DR](https://dev.to/jaepass/what-is-headless-ecommerce-3nfb).
 
-So now what is Commerce.js? Commerce.js is an API-first eCommerce solution platform aimed at creating seamless eCommerce solution integrated with modern tools. As this was my first foray into creating a headless eCommerce solution as a new developer, being able to jump right in an spit out a scaffold of an eCommerce app with Commerce.js really reinstates the power of this developer tool.
+So now what is Commerce.js? Commerce.js is an API-first eCommerce solution platform aimed at creating seamless eCommerce solution that easily integrates with any modern tool. As this was my first foray into creating a headless eCommerce solution as a new developer, being able to jump right in an spit out a scaffold of an eCommerce app with Commerce.js really reinstates the power and low barrier entry of this developer tool. Please read more into Chec Platform (our API platform) and our Commerce.js SDK [here](http://support.chec.io/en/articles/513192-what-is-chec-platform-chec-dashboard-and-commerce-js).
 
 ## Prerequisites
 
@@ -31,11 +31,11 @@ The goal of this tutorial is to walk you through creating a simple storefront di
 
 The styling of this project is done mainly using CSS and a bit of Bootstrap for basic layout. We will not be going into too much details on the styling and instead hone our focus in on the logic of Commerce.js.
 
-If you would like to jump right into forking the repo, and customize the storefront as you please, then disregard the rest of this tutorial! Otherwise, let's get right into it!
+If you would like to jump right into forking the repo and customize the storefront as you please, then disregard the rest of this tutorial! Otherwise, let's get right into it!
 
 ## Getting started
 
-
+Did you know the 
 
 ## Project setup
 
