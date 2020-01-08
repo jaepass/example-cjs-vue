@@ -7,9 +7,9 @@ https://jaepass.github.io/example-cjs-vue/
 
 For this guide, we will be creating a single page product display of a Chec storefront using [Commerce.js](https://commercejs.com/) SDK and [Vue.js](https://vuejs.org/) as a framework. 
 
-What is **Commerce.js** you might ask? If this is your first foray into a **headless eCommerce** project, please continue to read on! Another question might then be "What is headless eCommerce?" There are definitely a lot of sources out there explaining what exactly this "headless" concept means. A headless platform has its frontend decoupled so that the data orchestration or inventory management is handled in the backend and fetched using an API. This concept completely eliminates the complexity and gives frontend developers the power to create a eCommerce project, an otherwise daunting task if you are a new developer. When I first started my dev career at [Commerce.js](https://commercejs.com/), I did my fair share of digging and wrote up a [TL;DR](https://dev.to/jaepass/what-is-headless-ecommerce-3nfb).
+What is **Commerce.js** you might ask? If this is your first foray into a **headless eCommerce** project, please continue to read on! Another question might then be "What is headless eCommerce?" There are definitely a lot of sources out there explaining what exactly this "headless" concept means. A headless platform has its frontend decoupled so that the data orchestration or inventory management is handled in the backend and fetched using an API. This concept completely eliminates the complexity and gives frontend developers the power to easily create an eCommerce web store, an otherwise daunting task if you are a newcomer. When I first started my dev career at [Commerce.js](https://commercejs.com/), I did my fair share of digging and wrote up a [TL;DR](https://dev.to/jaepass/what-is-headless-ecommerce-3nfb).
 
-So now what is Commerce.js? Commerce.js is an API-first eCommerce solution platform aimed at creating seamless eCommerce solutions that easily integrate with any modern tool. As this was my first foray into creating a headless eCommerce solution, being able to jump right in an spit out a scaffold of an eCommerce app with Commerce.js really reinstates the power and low barrier entry of the [Commerce.js SDK]() developer tool. Please read more into Chec Platform (our API platform) and our Commerce.js SDK [here](http://support.chec.io/en/articles/513192-what-is-chec-platform-chec-dashboard-and-commerce-js).
+So now what is Commerce.js? Commerce.js is an **API-first** eCommerce solution platform aimed at creating seamless eCommerce solutions that easily integrate with any modern tool. As this was my first foray into creating a headless eCommerce solution, being able to jump right in and spit out a scaffold of an eCommerce app with Commerce.js really reinstates the power and low barrier entry of the [Commerce.js SDK]() developer tool. Please read more into Chec Platform (our API platform) and our Commerce.js SDK [here](http://support.chec.io/en/articles/513192-what-is-chec-platform-chec-dashboard-and-commerce-js).
 
 ## Prerequisites
 
@@ -27,11 +27,11 @@ We are assuming you have some knowledge of the below concepts before starting th
 
 ## Some things note
 
-The goal of this tutorial is to walk you through creating a simple storefront displaying your product catalogue with Commerce.js and Vue.js. This particular project on the repository contains the full checkout process but for the sake of simplicity and easing into using Commerce.js, we will only be focusing our efforts in creating the product display. 
+- The goal of this tutorial is to walk you through creating a simple storefront displaying your product catalogue with Commerce.js and Vue.js. This particular project on the repository contains the full checkout process but for the sake of simplicity and easing into using Commerce.js, we will only be focusing our efforts in creating the product display. 
 
-The styling of this project is done mainly using CSS and a bit of Bootstrap for basic layout. We will not be going into too much details on the styling and instead hone our focus in on the logic of Commerce.js.
+- The styling of this project is done mainly using CSS and a bit of Bootstrap for basic layout. We will not be going into too much details on the styling and instead hone our focus in on the logic of Commerce.js.
 
-If you would like to jump right into forking the repo and customize the storefront as you please, then disregard the rest of this tutorial! Otherwise, let's get right into it!
+- If you would like to jump right into forking the repo and customize the storefront as you please, then disregard the rest of this tutorial! Otherwise, let's get right into it!
 
 ## Getting started
 
@@ -84,7 +84,8 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
   npm run serve
   ```
 
-### 
+### Inject Commerce.js logic layer
+
 
 ### Compiles and hot-reloads for development
 ```
