@@ -13,7 +13,7 @@ So now what is Commerce.js? Commerce.js is an API-first eCommerce solution platf
 
 ## Prerequisites
 
-There are a few basic prerequisites before starting this project. 
+We are assuming you have some knowledge of the below concepts before starting this project: 
 
 - Some basic knowledge of JavaScript
 - Some knowledge of a JS framework like Vue.js
@@ -35,23 +35,39 @@ If you would like to jump right into forking the repo and customize the storefro
 
 ## Getting started
 
-### 1. Sign up for Chec account
+### 1. Sign up for your Chec account
+
   - To start building your eCommerce storefront, we first need to get you up and running with a [Chec](https://dashboard.chec.io/signup) account.
 
-  - Did you know you can get started with Chec for free? Yes, you heard right. Getting set up with our standard merchant account is completely FREE! So what are you waiting for? Let's head over to [Chec](https://dashboard.chec.io/signup) to create your account and get started with creating your eCommerce website. 
+  - Did you know you can get started with Chec for free? Yes, you heard right. Getting set up with our standard merchant account is completely FREE! So what are you waiting for? Let's head over to [Chec](https://dashboard.chec.io/signup) to create your account and get going with creating your eCommerce website. 
 
 ### 2. Upload your products
 
   - In order to build an eCommerce website, you'd need some data to work with like products and product information. So once you've set up your account, let's log in and start [uploading our products](https://dashboard.chec.io/products)! 
 
-  - To keep a visually modular product display, we will be uploading 9 products in total, each with the below details at bare minimum:
+  - To keep a visually modular product display, we will be uploading 9 products in total, each with the below details at the bare minimum:
     - Product Image
     - Product Name
     - Price
     - Product Description
 
-
 ## Project setup
+
+For this particular demo storefront integration, we are using [Vue.js](https://vuejs.org/) framework. We're big fans of Vue.js here at Chec Platform/Commerce.js. There are several reasons why: If you love frameworks that are modular, performant, and comes packed with the coolest cats like [directives](https://vuejs.org/v2/guide/syntax.html#Directives), you'll love [Vue.js](https://vuejs.org/v2/guide/). 
+
+### 1. Install Vuejs
+  - Open your Terminal window and install Vue:
+
+  ```
+  npm install -g @vue/cli
+  ```
+
+### 2. Set up your Vue project:
+  - From your Terminal change into the directory of your project:
+
+  ```
+  cd your-project-name
+  ```
 
 
 
