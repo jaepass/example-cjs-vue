@@ -35,12 +35,14 @@ If you would like to jump right into forking the repo and customize the storefro
 
 ## Getting started
 
-1. Sign up for Chec account
-    To start building your eCommerce storefront, we first need to get you up and running with a [Chec](https://dashboard.chec.io/signup) account.
+1. **Sign up for Chec account**
+  - To start building your eCommerce storefront, we first need to get you up and running with a [Chec](https://dashboard.chec.io/signup) account.
 
-Did you know you can get started with Chec for free? Yes, you heard right. Getting set up with our standard merchant account is completely FREE! So what are you waiting for? Let's head over to [Chec](https://dashboard.chec.io/signup) to create your account and get started with creating your eCommerce website. 
+  - Did you know you can get started with Chec for free? Yes, you heard right. Getting set up with our standard merchant account is completely FREE! So what are you waiting for? Let's head over to [Chec](https://dashboard.chec.io/signup) to create your account and get started with creating your eCommerce website. 
 
-In order to build an eCommerce website, you'd need some data to work with like products and product information. So once you've set up your account, let's log in and start uploading our products! 
+2. **Upload your products**
+
+  - In order to build an eCommerce website, you'd need some data to work with like products and product information. So once you've set up your account, let's log in and start uploading our products! 
 
 
 
