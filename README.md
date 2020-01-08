@@ -92,14 +92,15 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
 
   2. Now we need to link up our Chec store to our project. To do so, we need to create a new Commerce instance and pass in our public API key (grab your public key from your [Chec dashboard](https://dashboard.chec.io/setup/developer):
 
-  ```
+  ```javascript
   //main.js
 
   // Import Commerce.js as a dependency
   import Commerce from '@chec/commerce.js';
 
   // Initialize store with public key and store key in variable
-  const commerce = new Commerce('pk_17054571618e73520760e522b00e08ee196503b14e95c', true);
+  // Commerce also accepts a second argument 'true', enabling the Commerce.js console debugger
+  const commerce = new Commerce('ENTER YOUR PUBLIC KEY HERE', true);
   ```
 
 
