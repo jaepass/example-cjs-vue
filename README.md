@@ -84,7 +84,7 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
   npm run serve
   ```
 
-### Inject the Commerce.js logic layer
+### 3. Inject the Commerce.js logic layer
   1. In order to communicate with the Chec API and fetch data from the backend, we need to install the Commerce.js SDK:
   ```
   npm install @chec/commerce.js
@@ -102,6 +102,12 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
   // Commerce also accepts a second argument 'true', enabling the Commerce.js console debugger
   const commerce = new Commerce('ENTER YOUR PUBLIC KEY HERE', true);
   ```
+
+### 4. Start creating your product display
+
+This is where the real fun part starts. You will now see how truly progressive and powerful building a JAMstack project is. All the abtraction of server-side processes is completely decoupled. All you need to do is make requests to various [Chec API endpoints](https://commercejs.com/docs/api/), receive successful responses, then you have your raw data to output beautifully onto your web store. 
+
+> All of our APIs are designed to work either alone or with each other. Our APIs are organized around REST and are designed to have predictable, resource-oriented URLs that use appropriate HTTP response codes to indicate the results of API responses. All of the API responses are JSON encoded.
 
 
 
