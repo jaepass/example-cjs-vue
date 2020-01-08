@@ -9,7 +9,7 @@ For this guide, we will be creating a single page product display of a Chec stor
 
 What is **Commerce.js** you might ask? If this is your first foray into a **headless eCommerce** project, please continue to read on! Another question might then be "What is headless eCommerce?" There are definitely a lot of sources out there explaining what exactly this "headless" concept means. A headless platform has its frontend decoupled so that the data orchestration or inventory management is handled in the backend and fetched using an API. This concept completely eliminates the complexity and gives frontend developers the power to easily create an eCommerce web store, an otherwise daunting task if you are a newcomer. When I first started my dev career at [Commerce.js](https://commercejs.com/), I did my fair share of digging and wrote up a [TL;DR](https://dev.to/jaepass/what-is-headless-ecommerce-3nfb).
 
-So now what is Commerce.js? Commerce.js is an **API-first** eCommerce solution platform aimed at creating seamless eCommerce solutions that easily integrate with any modern tool. As this was my first foray into creating a headless eCommerce solution, being able to jump right in and spit out a scaffold of an eCommerce app with Commerce.js really reinstates the power and low barrier entry of the [Commerce.js SDK]() developer tool. Please read more into Chec Platform (our API platform) and our Commerce.js SDK [here](http://support.chec.io/en/articles/513192-what-is-chec-platform-chec-dashboard-and-commerce-js).
+So now what is Commerce.js? Commerce.js is an **API-first** eCommerce solution platform aimed at creating seamless eCommerce solutions that easily integrate with any modern tool. As this was my first foray into creating a headless eCommerce solution, being able to jump right in and spit out a scaffold of an eCommerce app with Commerce.js really reinstates the power and low barrier entry of the [Commerce.js SDK](https://commercejs.com/docs/getting-started) developer tool. Please read more into Chec Platform (our API platform) and our Commerce.js SDK [here](commercejs.com/docs).
 
 ## Prerequisites
 
@@ -84,13 +84,26 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
   npm run serve
   ```
 
-### Inject Commerce.js logic layer
+### Inject the Commerce.js logic layer
+  1. In order to communicate with the Chec API and fetch data from the backend, we need to install the Commerce.js SDK:
+  ```
+  npm install @chec/commerce.js
+  ```
+
+  2. Now we need to link up our Chec store to our project. To do so, we need to create a new Commerce instance and pass in our public API key (grab your public key from your [Chec dashboard](https://dashboard.chec.io/setup/developer):
+
+  ```
+  //main.js
+
+  // Import Commerce.js as a dependency
+  import Commerce from '@chec/commerce.js';
+
+  // Initialize store with public key and store key in variable
+  const commerce = new Commerce('pk_17054571618e73520760e522b00e08ee196503b14e95c', true);
+  ```
 
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+
 
 ### Compiles and minifies for production
 ```
