@@ -40,11 +40,15 @@ If you would like to jump right into forking the repo and customize the storefro
 
   - Did you know you can get started with Chec for free? Yes, you heard right. Getting set up with our standard merchant account is completely FREE! So what are you waiting for? Let's head over to [Chec](https://dashboard.chec.io/signup) to create your account and get started with creating your eCommerce website. 
 
-### 1. Upload your products
+### 2. Upload your products
 
-  - In order to build an eCommerce website, you'd need some data to work with like products and product information. So once you've set up your account, let's log in and start uploading our products! 
+  - In order to build an eCommerce website, you'd need some data to work with like products and product information. So once you've set up your account, let's log in and start [uploading our products](https://dashboard.chec.io/products)! 
 
-
+  - To keep a visually modular product display, we will be uploading 9 products in total, each with the below details at bare minimum:
+    - Product Image
+    - Product Name
+    - Price
+    - Product Description
 
 
 ## Project setup
