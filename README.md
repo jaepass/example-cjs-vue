@@ -140,6 +140,26 @@ If you're starting your project from scratch, the Vue app has neatly laid out th
 - `<script></script>`
 - `<style></style>`
 
+Or simply start a new Vue skeleton structure by typing `/` + `tab` key. You will end up with a file structure like this:
+
+```javascript
+<template>
+  
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>
+```
+
+
+
 ### Compiles and minifies for production
 ```
 npm run build
