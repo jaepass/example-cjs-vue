@@ -9,15 +9,15 @@ For this guide, we will be creating a single page product display of a Chec stor
 
 What is **Commerce.js** you might ask? If this is your first foray into a **headless eCommerce** project, please continue to read on! Another question might then be "What is headless eCommerce?" There are definitely a lot of sources out there explaining what exactly this "headless" concept means. A headless platform has its frontend decoupled so that the data orchestration or inventory management is handled in the backend and fetched using an API. This concept completely eliminates the complexity and gives frontend developers the power to easily create an eCommerce web store, an otherwise daunting task if you are a newcomer. When I first started my dev career at [Commerce.js](https://commercejs.com/), I did my fair share of digging and wrote up a [TL;DR](https://dev.to/jaepass/what-is-headless-ecommerce-3nfb).
 
-So now what is Commerce.js? Commerce.js is an **API-first** eCommerce solution platform aimed at creating seamless eCommerce solutions that easily integrate with any modern tool. As this was my first foray into creating a headless eCommerce solution, being able to jump right in and spit out a scaffold of an eCommerce app with Commerce.js really reinstates the power and low barrier entry of the [Commerce.js SDK](https://commercejs.com/docs/getting-started) developer tool. Please read more into Chec Platform (our API platform) and our Commerce.js SDK [here](commercejs.com/docs).
+So now what is Commerce.js? Commerce.js is an **API-first** eCommerce solution platform aimed at creating seamless eCommerce solutions that easily integrate with any modern tool. As this was my first foray into creating a headless eCommerce solution, being able to jump right in and spit out a scaffold of an eCommerce app really establishes[Commerce.js](https://commercejs.com/docs/getting-started) as a powerful developer tool with a low barrier to entry. Please read more into Chec Platform (our API platform) and our Commerce.js SDK [here](commercejs.com/docs).
 
 ## Prerequisites
 
-The project assumes you have some knowledge of the below concepts before starting this project: 
+This project assumes you have some knowledge of the below concepts before starting: 
 
 - Some basic knowledge of JavaScript
 - Some knowledge of a JS framework like Vue.js
-- An idea of the concept of JAMstack and how APIs work
+- An idea of the JAMstack architecture and how APIs work
 
 ## What you will need to start this project
 
@@ -160,16 +160,17 @@ export default {
 </style>
 ```
 
-Once you have your App.vue skeleton out, let's start adding in the elements.
+Once you have your App.vue skeleton, let's start adding in the elements.
 
   1. Add layout in `<template>`
-  ```html
-  <template>
+
+```html
+    <template>
     <div>
         <!-- Products catalogue -->
         <div class="container mx-auto px-4">
             <div class="flex mb-4">
-                <div class="row" id="shop">
+                <div class="row">
                     <!-- Loop through products and output -->
                     <!-- :key is for Vue to keep track of items with ids -->
                     <div class="col-sm-4" v-for="product in products" :key="product.id">
@@ -180,8 +181,16 @@ Once you have your App.vue skeleton out, let's start adding in the elements.
                 </div>
             </div><!-- END of App Container -->
     </div><!-- END of Storefront -->
-  </template>
-    ```
+    </template>
+```
+
+  Now let's break down the code shall we?
+
+  We can safely ignore those class attributes such as `container`, `mx`, `px`, `flex`, `col`, etc. as those are Bootstrap pre-defined class names. These Bootstrap components help to lay out the product display in responsive columns. 
+
+  Nested within the Bootstrap div tags is a `<product>` component. We will touch more on this below when we get into the `script` component.
+
+  Vue is a declarative framework, you can read more into this [here](). We can pass directives like `v-bind:product="product"`
 
 ### Compiles and minifies for production
 ```
