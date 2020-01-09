@@ -165,6 +165,7 @@ Once you have your App.vue skeleton, let's start adding in the elements.
   1. Add layout in `<template>`
 
 ```html
+<!-- App.vue -->
 <template>
     <div>
         <!-- Products catalogue -->
@@ -236,7 +237,7 @@ Now, let's add a Product component
   1. Add layout in `<template>`
 
 ```html
-<!-- Products -->
+<!-- Product.vue -->
 <template>
     <div class="card my-5 border-0" style="height:41rem;">
         <div class="card-body">
