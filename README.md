@@ -167,17 +167,21 @@ Once you have your App.vue skeleton, let's start adding in the elements.
 <script>
 import Product from "@/components/Product.vue";
 
+// Create App's initial state
+// Pass in our Product component, which we will be creating later
 export default {
   name: "app",
   components: {
     Product, 
   },
+  // Pass commerce as a prop
   props: {
     commerce: {
       required: true,
       type: Object
     }
   },
+  // Return our product data 
   data() {
     return {
       products: [],
@@ -186,12 +190,12 @@ export default {
 
   //When Vue app is created, run these functions to fetch data from API
   created() {
-    //List all products from store 
+    //Make a request to list products
     this.commerce.products.list().then((resp) => {
-        //Successful response
+        //Respond with products data upon a successful request
         this.products = resp.data;
     })
-    //Error
+    //Handle Error
     .catch((error) => {
         alert(error);
     });
@@ -201,7 +205,7 @@ export default {
 </script>
 ```
 
-When our App is mounted/created, we use Commerce.js `commerce.products.list()` method to respond with a list of our static product objects. As you can see, we are only fetching our products list once our app is created()
+When our App is mounted/created, we use Commerce.js `commerce.products.list()` method to respond with a list of our static product objects. As you can see, we are only fetching our products list once our app is `created()`.
 
   2. Add layout in `<template>`
 
