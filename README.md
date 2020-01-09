@@ -9,7 +9,7 @@ For this guide, we will be creating a single page product display of a Chec stor
 
 What is **Commerce.js** you might ask? If this is your first foray into a **headless eCommerce** project, please continue to read on! Another question might then be "What is headless eCommerce?" There are definitely a lot of sources out there explaining what exactly this "headless" concept means. A headless platform has its frontend decoupled so that the data orchestration or inventory management is handled in the backend and fetched using an API. This concept completely eliminates the complexity and gives frontend developers the power to easily create an eCommerce web store, an otherwise daunting task if you are a newcomer. When I first started my dev career at [Commerce.js](https://commercejs.com/), I did my fair share of digging and wrote up a [TL;DR](https://dev.to/jaepass/what-is-headless-ecommerce-3nfb).
 
-So now what is Commerce.js? Commerce.js is an **API-first** eCommerce solution platform aimed at creating seamless eCommerce solutions that easily integrate with any modern tool. As this was my first foray into creating a headless eCommerce solution, being able to jump right in and spit out a scaffold of an eCommerce app really establishes[Commerce.js](https://commercejs.com/docs/getting-started) as a powerful developer tool with a low barrier to entry. Please read more into Chec Platform (our API platform) and our Commerce.js SDK [here](commercejs.com/docs).
+Commerce.js is an **API-first** eCommerce solution platform aimed at creating seamless eCommerce solutions that easily integrate with any modern tool. As this was my first foray into creating a headless eCommerce solution, being able to jump right in and spit out a scaffold of a web store app really establishes[Commerce.js](https://commercejs.com/docs/getting-started) as a powerful developer tool with a low barrier to entry. But I would say the one best selling point about using a headless eCommerce tool like Commerce.js is the complete control you have over your frontend. Think of designing a unique digital experience with complete custom content consumption all the way through to your purchase flow. No out-of-the-box design here. If you can dream it, you can build it with Commerce.js! Please read more into Chec Platform (our API platform) and our Commerce.js SDK [here](commercejs.com/docs).
 
 ## Prerequisites
 
@@ -69,6 +69,12 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
   vue create your-project-name
   ```
 
+  Follow the next steps to add the following to your project (feel free to opt out for now as you can always install these dependencies separately later on):
+
+    - Babel
+    - CSS Pre-processors: SASS/SCSS (if you plan to use SASS)
+    - Linter
+
   2. Change directory into your project folder:
   ```
   cd your-project-name
@@ -125,7 +131,8 @@ const commerce = new Commerce('pk_17054571618e73520760e522b00e08ee196503b14e95c'
 
 Vue.config.productionTip = false
 
-//Here, we pass our Commerce instance as a prop
+// Create a Vue instance
+// Pass our Commerce instance as a prop
 new Vue({
   render: h => h(App,
     { props: { commerce } }),
@@ -138,11 +145,11 @@ We will be coding most of the logic in the `App.vue` file. So let's open up the 
 
 If you're starting your project from scratch, the Vue app has neatly laid out the file components for you. A scaffolded `App.js` file contains these elements:
 
-- `<template></template>` Within the template tags is where you will be laying out the content of your product display
+- `<template></template>` Within the template tags is where you will be writing your markup for your product display container
 - `<script></script>` In the script tags is where the logic of the app will live
 - `<style></style>` The style tags is where you'll be styling the components of your app
 
-Or simply start a new Vue skeleton structure by typing `/` + `tab` key. You will end up with a file structure like this:
+Or simply start a new file skeleton structure by typing `/` + `tab` key. You will end up with a file structure like this:
 
 ```javascript
 <template>
@@ -164,11 +171,11 @@ Once you have your App.vue skeleton, let's start adding in the elements.
 
   1. Add logic in `<script>`
 ```javascript
+//App.vue
+
 <script>
 import Product from "@/components/Product.vue";
 
-// Create App's initial state
-// Pass in our Product component, which we will be creating later
 export default {
   name: "app",
   components: {
@@ -204,8 +211,11 @@ export default {
 
 </script>
 ```
+Let's start by breaking the above code down in chunks shall we?
 
-When our App is mounted/created, we use Commerce.js `commerce.products.list()` method to respond with a list of our static product objects. As you can see, we are only fetching our products list once our app is `created()`.
+In our components object, we need to pass `Product` as a prop to later return it in our data function below it. The returned object property (our `Product` in this case) can then be bound to the template view. A custom directive which we will later bind to our template is essentially a prop, and our prop value is each individual looped product item. (more on this in the next section).
+
+When our App is mounted/created, we use Commerce.js `commerce.products.list()` method to respond with a list of our static product objects. As you can see, we are only making a request to our Chec store backend once our app is `created()`. Upon a successful request, we then list out our products, otherwise we respond with an error message. 
 
   2. Add layout in `<template>`
 
