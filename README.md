@@ -103,12 +103,36 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
   const commerce = new Commerce('ENTER YOUR PUBLIC KEY HERE', true);
   ```
 
-### 4. Start creating your product display
+### 4. Instantiating your Chec store
 
 This is where the real fun part starts. You will now see how truly progressive and powerful building a JAMstack project is. All the abstraction of server-side processes is completely decoupled. All you need to do is make requests to various [Chec API endpoints](https://commercejs.com/docs/api/), receive successful responses, then you have your raw data to output beautifully onto your web store. 
 
 > All of our APIs are designed to work either alone or with each other. Our APIs are organized around REST and are designed to have predictable, resource-oriented URLs that use appropriate HTTP response codes to indicate the results of API responses. All of the API responses are JSON encoded.
 
+Still working from our `main.js` file, copy the rest of the code below:
+
+```javascript
+// Import Commerce.js as a dependency
+import Commerce from '@chec/commerce.js';
+
+import Vue from 'vue'
+import App from './App.vue'
+
+// Initialize store with public key, store key in variable
+const commerce = new Commerce('pk_17054571618e73520760e522b00e08ee196503b14e95c', true);
+
+Vue.config.productionTip = false
+
+//Here, we pass our Commerce instance as a prop
+new Vue({
+  render: h => h(App,
+    { props: { commerce } }),
+}).$mount('#app')
+```
+
+### 5. Start creating your product display
+
+We will be coding most of the logic in the `App.vue` file. So lets open up the file and see what we're working with!
 
 
 
