@@ -166,6 +166,7 @@ Once you have your App.vue skeleton, let's start adding in the elements.
 
 ```html
 <!-- App.vue -->
+
 <template>
     <div>
         <!-- Products catalogue -->
@@ -173,7 +174,7 @@ Once you have your App.vue skeleton, let's start adding in the elements.
             <div class="flex mb-4">
                 <div class="row">
                     <!-- Loop through products and output -->
-                    <!-- :key is for Vue to keep track of items with ids -->
+                    <!-- :key is for Vue to keep track of items -->
                     <div class="col-sm-4" v-for="product in products" :key="product.id">
                         <!-- Bind product to cart -->
                         <product  :product="product"/>  
@@ -189,9 +190,18 @@ Now let's break down the code shall we?
 
 We can safely ignore those class attributes such as `container`, `mx`, `px`, `flex`, `col`, etc. as those are Bootstrap pre-defined class names. These Bootstrap components help to lay out the product display in responsive columns. 
 
+The neat thing about Vue is that it is a declarative framework, meaning we can render dynamic data to the DOM using Vue's straightforward template syntax. Vue also comes packed with built-in directives like `v-for`, which is most fitting to use to loop through our product data here:
+
+```html
+<div v-for="product in products" :key="product.id">
+```
+
+The v-for directive here helps to loop through each product data to render. The `:key` attribute gives each looped item a unique condition, which in this case we use our `product.id`. If you're curious in understanding the :key attribute, the Vue official docs provides more info [here](https://vuejs.org/v2/api/#key).
+
+
 Nested within the Bootstrap div tags is a `<product>` component. We will touch more on this below when we get into the `script` component.
 
-Vue is a declarative framework, you can read more into this [here](). We can pass directives like `v-bind:product="product"`
+We bind our element attributes `v-bind:product="product"` with the `v:bind` directive. `:product="product"` is a shorthand of `v:bindproduct`. We will get to creating our Product component in the next section. At this point, what you need to understand is the `<product>` component within the template is injecting in and displaying what our products layout. 
 
   2. Add logic in `<script>`
 ```javascript
@@ -238,6 +248,7 @@ Now, let's add a Product component
 
 ```html
 <!-- Product.vue -->
+
 <template>
     <div class="card my-5 border-0" style="height:41rem;">
         <div class="card-body">
