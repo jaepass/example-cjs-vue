@@ -112,6 +112,8 @@ This is where the real fun part starts. You will now see how truly progressive a
 Still working from our `main.js` file, copy the rest of the code below:
 
 ```javascript
+//main.js
+
 // Import Commerce.js as a dependency
 import Commerce from '@chec/commerce.js';
 
@@ -136,9 +138,9 @@ We will be coding most of the logic in the `App.vue` file. So let's open up the 
 
 If you're starting your project from scratch, the Vue app has neatly laid out the file components for you. A scaffolded `App.js` file contains these elements:
 
-- `<template></template>`
-- `<script></script>`
-- `<style></style>`
+- `<template></template>` Within the template tags is where you will be laying out the content of your product display
+- `<script></script>` In the script tags is where the logic of the app will live
+- `<style></style>` The style tags is where you'll be styling the components of your app
 
 Or simply start a new Vue skeleton structure by typing `/` + `tab` key. You will end up with a file structure like this:
 
@@ -158,7 +160,28 @@ export default {
 </style>
 ```
 
+Once you have your App.vue skeleton out, let's start adding in the elements.
 
+  1. Add layout in `<template>`
+  ```
+  <template>
+    <div>
+        <!-- Products catalogue -->
+        <div class="container mx-auto px-4">
+            <div class="flex mb-4">
+                <div class="row" id="shop">
+                    <!-- Loop through products and output -->
+                    <!-- :key is for Vue to keep track of items with ids -->
+                    <div class="col-sm-4" v-for="product in products" :key="product.id">
+                        <!-- Bind product to cart -->
+                        <product  :product="product"/>  
+                        </div><!-- END Product Catalogue -->
+                    </div>
+                </div>
+            </div><!-- END of App Container -->
+    </div><!-- END of Storefront -->
+  </template>
+    ```
 
 ### Compiles and minifies for production
 ```
