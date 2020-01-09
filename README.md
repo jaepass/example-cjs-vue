@@ -163,7 +163,7 @@ export default {
 Once you have your App.vue skeleton out, let's start adding in the elements.
 
   1. Add layout in `<template>`
-  ```
+  ```html
   <template>
     <div>
         <!-- Products catalogue -->
