@@ -53,7 +53,7 @@ This project assumes you have some knowledge of the below concepts before starti
 
 ## Project setup
 
-For this particular demo storefront integration, we are using [Vue.js](https://vuejs.org/) framework. We're big fans of Vue.js here at Chec Platform/Commerce.js. There are several reasons why: If you love frameworks that are modular, performant, and comes packed with the coolest cats like [directives](https://vuejs.org/v2/guide/syntax.html#Directives), you'll love [Vue.js](https://vuejs.org/v2/guide/). 
+For this particular demo storefront integration, we are using [Vue.js](https://vuejs.org/) framework. We're big fans of Vue.js here at Chec Platform/Commerce.js. There are several reasons why: If you love frameworks that are modular, lightweight, performant, and comes packed with the coolest cats like [directives](https://vuejs.org/v2/guide/syntax.html#Directives), you'll love [Vue.js](https://vuejs.org/v2/guide/). 
 
 ### 1. Install Vuejs
   - Open your Terminal window and install Vue globally:
@@ -165,7 +165,7 @@ Once you have your App.vue skeleton, let's start adding in the elements.
   1. Add layout in `<template>`
 
 ```html
-    <template>
+<template>
     <div>
         <!-- Products catalogue -->
         <div class="container mx-auto px-4">
@@ -181,16 +181,55 @@ Once you have your App.vue skeleton, let's start adding in the elements.
                 </div>
             </div><!-- END of App Container -->
     </div><!-- END of Storefront -->
-    </template>
+</template>
 ```
 
-  Now let's break down the code shall we?
+Now let's break down the code shall we?
 
-  We can safely ignore those class attributes such as `container`, `mx`, `px`, `flex`, `col`, etc. as those are Bootstrap pre-defined class names. These Bootstrap components help to lay out the product display in responsive columns. 
+We can safely ignore those class attributes such as `container`, `mx`, `px`, `flex`, `col`, etc. as those are Bootstrap pre-defined class names. These Bootstrap components help to lay out the product display in responsive columns. 
 
-  Nested within the Bootstrap div tags is a `<product>` component. We will touch more on this below when we get into the `script` component.
+Nested within the Bootstrap div tags is a `<product>` component. We will touch more on this below when we get into the `script` component.
 
-  Vue is a declarative framework, you can read more into this [here](). We can pass directives like `v-bind:product="product"`
+Vue is a declarative framework, you can read more into this [here](). We can pass directives like `v-bind:product="product"`
+
+  2. Add logic in `<script>`
+```javascript
+<script>
+import Product from "@/components/Product.vue";
+
+export default {
+  name: "app",
+  components: {
+    Product, 
+  },
+  props: {
+    commerce: {
+      required: true,
+      type: Object
+    }
+  },
+  data() {
+    return {
+      products: [],
+    };
+  },
+
+  //When Vue app is created, run these functions to fetch data from API
+  created() {
+    //List all products from store 
+    this.commerce.products.list().then((resp) => {
+        //Successful response
+        this.products = resp.data;
+    })
+    //Error
+    .catch((error) => {
+        alert(error);
+    });
+  },
+};
+
+</script>
+```
 
 ### Compiles and minifies for production
 ```
