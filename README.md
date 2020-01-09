@@ -13,7 +13,7 @@ So now what is Commerce.js? Commerce.js is an **API-first** eCommerce solution p
 
 ## Prerequisites
 
-We are assuming you have some knowledge of the below concepts before starting this project: 
+The project assumes you have some knowledge of the below concepts before starting this project: 
 
 - Some basic knowledge of JavaScript
 - Some knowledge of a JS framework like Vue.js
@@ -31,7 +31,7 @@ We are assuming you have some knowledge of the below concepts before starting th
 
 - The styling of this project is done mainly using CSS and a bit of Bootstrap for basic layout. We will not be going into too much details on the styling and instead hone our focus in on the logic of Commerce.js.
 
-- If you would like to jump right into forking the repo and customize the storefront as you please, then disregard the rest of this tutorial! Otherwise, let's get right into it!
+- If you would like to jump right into forking this repo and customize the storefront as you please, then disregard the rest of this tutorial! Otherwise, let's get right into it!
 
 ## Getting started
 
@@ -39,7 +39,7 @@ We are assuming you have some knowledge of the below concepts before starting th
 
   - To start building your eCommerce storefront, we first need to get you up and running with a [Chec](https://dashboard.chec.io/signup) account.
 
-  - Did you know you can get started with Chec for free? Yes, you heard right. Getting set up with our standard merchant account is completely FREE! So what are you waiting for? Let's head over to [Chec](https://dashboard.chec.io/signup) to create your account and get going with creating your eCommerce website. 
+  - Did you know you can get started with Chec for **_free_**? Yes, you heard right. Getting set up with our standard merchant account is completely **FREE**! So what are you waiting for? Let's head over to [Chec](https://dashboard.chec.io/signup) to create your account and get rockin' with creating your eCommerce website. 
 
 ### 2. Upload your products
 
@@ -74,7 +74,7 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
   cd your-project-name
   ```
 
-  3. Install dependencies required by the template (maybe brew yourself a nice cup of coffee while you wait):
+  3. Install dependencies required by the template (maybe brew yourself a nice cup of coffee after running installation):
   ```
   npm install
   ```
@@ -90,7 +90,7 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
   npm install @chec/commerce.js
   ```
 
-  2. Now we need to link up our Chec store to our project. To do so, we need to create a new Commerce instance and pass in our public API key (grab your public key from your [Chec dashboard](https://dashboard.chec.io/setup/developer):
+  2. Now we need to link up our Chec store to our project. To do so, we need to create a new Commerce instance and pass in our public API key (grab your public key from your [Chec dashboard](https://dashboard.chec.io/setup/developer)):
 
   ```javascript
   //main.js
@@ -105,7 +105,7 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
 
 ### 4. Start creating your product display
 
-This is where the real fun part starts. You will now see how truly progressive and powerful building a JAMstack project is. All the abtraction of server-side processes is completely decoupled. All you need to do is make requests to various [Chec API endpoints](https://commercejs.com/docs/api/), receive successful responses, then you have your raw data to output beautifully onto your web store. 
+This is where the real fun part starts. You will now see how truly progressive and powerful building a JAMstack project is. All the abstraction of server-side processes is completely decoupled. All you need to do is make requests to various [Chec API endpoints](https://commercejs.com/docs/api/), receive successful responses, then you have your raw data to output beautifully onto your web store. 
 
 > All of our APIs are designed to work either alone or with each other. Our APIs are organized around REST and are designed to have predictable, resource-oriented URLs that use appropriate HTTP response codes to indicate the results of API responses. All of the API responses are JSON encoded.
 
