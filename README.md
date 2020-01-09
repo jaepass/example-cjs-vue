@@ -132,9 +132,13 @@ new Vue({
 
 ### 5. Start creating your product display
 
-We will be coding most of the logic in the `App.vue` file. So lets open up the file and see what we're working with!
+We will be coding most of the logic in the `App.vue` file. So let's open up the file and see what we're working with!
 
+If you're starting your project from scratch, the Vue app has neatly laid out the file components for you. A scaffolded `App.js` file contains these elements:
 
+- `<template></template>`
+- `<script></script>`
+- `<style></style>`
 
 ### Compiles and minifies for production
 ```
