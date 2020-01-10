@@ -145,7 +145,7 @@ Our new Vue instance must be declared as an entry component in our `main.js`. We
 
 We will be coding most of the logic in the `App.vue` file. So let's open up the file and see what we're working with!
 
-If you're starting your project from scratch, the Vue app has neatly laid out the file components for you. A scaffolded `App.js` file contains these elements:
+If you're starting your project from scratch, the Vue app has neatly laid out the file components for you. For modularity, your HTML markup, JS, and CSS live in a single `.vue` extend file. A scaffolded `App.vue` file contains these elements:
 
 - `<template></template>` Within the template tags is where you will be writing your markup for your product display container
 - `<script></script>` In the script tags is where the logic of the app will live
@@ -263,9 +263,22 @@ Nested within is our `<product>` component:
 
 We bind our element attributes `v-bind:product="product"` with the `v:bind` directive. `:product="product"` is a shorthand of `v:bindproduct`. We will get to creating our Product component in the next section. At this point, what you need to understand is the `<product>` component within the template is injecting in and displaying what our products layout. 
 
-Now, let's add a Product component
+Let's now add our Product component and create a new file in `src/components`, name it `Product.vue`
 
-  **1. Add layout in `<template>`**
+**1. Add logic in `<script>`**
+
+```javascript
+<script>
+export default{
+    name: 'product',
+    props: ['product']
+}
+</script>
+```
+
+Here we are naming our component and passing our product as props. 
+
+  **2. Add layout in `<template>`**
 
 ```html
 <!-- Product.vue -->
@@ -282,16 +295,11 @@ Now, let's add a Product component
 </template>
 ```
 
-**2. Add logic in `<script>`**
+The **Commerce.js SDK** is what is allowing us to easily render our product data attributes such as `product.media.source`, `product.name`, `product.price.formatted_with_symbol`. Our Chec data can be rendered using either intepolation with double curly braces or custom directive attributes. Chec's API is beautifully designed with various endpoints to let you as a developer have access to work with all this data. It is now your turn to output your product data onto a unique customized eCommerce web app!
 
-```javascript
-<script>
-export default{
-    name: 'product',
-    props: ['product']
-}
-</script>
-```
+## The finish line
+
+Now 
 
 ### Compiles and minifies for production
 ```
