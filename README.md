@@ -63,7 +63,7 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
   ```
 
 ### 2. Set up your Vue project:
-  1. To create a new project, run:
+  **1. To create a new project, run:**
 
   ```
   vue create your-project-name
@@ -75,28 +75,28 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
 - CSS Pre-processors: SASS/SCSS (if you plan to use SASS)
 - Linter
 
-2. Change directory into your project folder:
+**2. Change directory into your project folder:**
 ```
 cd your-project-name
 ```
 
-3. Install dependencies required by the template (maybe brew yourself a nice cup of coffee after running installation):
+**3. Install dependencies required by the template (maybe brew yourself a nice cup of coffee after running installation):**
 ```
 npm install
 ```
 
-4. Start your local http server and run development:
+**4. Start your local http server and run development:**
 ```
 npm run serve
 ```
 
 ### 3. Inject the Commerce.js logic layer
-  1. In order to communicate with the Chec API and fetch data from the backend, we need to install the Commerce.js SDK:
+In order to communicate with the Chec API and fetch data from the backend, we need to install the Commerce.js SDK:
   ```
   npm install @chec/commerce.js
   ```
 
-  2. Now we need to link up our Chec store to our project. To do so, we need to create a new Commerce instance and pass in our public API key (grab your public key from your [Chec dashboard](https://dashboard.chec.io/setup/developer)) Let's open up our `src/main.js` file:
+Now we need to link up our Chec store to our project. To do so, we need to create a new Commerce instance and pass in our public API key (grab your public key from your [Chec dashboard](https://dashboard.chec.io/setup/developer)) Let's open up our `src/main.js` file:
 
   ```javascript
   //main.js
@@ -169,7 +169,7 @@ export default {
 </style>
 ```
 
-#### Once you have your App.vue skeleton, let's start adding in the elements.
+Once you have your App.vue skeleton, let's start adding in the elements.
 
   **1. Add logic in `<script>`**
 ```javascript
@@ -263,7 +263,7 @@ Nested within is our `<product>` component:
 
 We bind our element attributes `v-bind:product="product"` with the `v:bind` directive. `:product="product"` is a shorthand of `v:bindproduct`. We will get to creating our Product component in the next section. At this point, what you need to understand is the `<product>` component within the template is injecting in and displaying what our products layout. 
 
-#### Now, let's add a Product component
+Now, let's add a Product component
 
   **1. Add layout in `<template>`**
 
