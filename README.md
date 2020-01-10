@@ -7,7 +7,7 @@ https://jaepass.github.io/example-cjs-vue/
 
 For this guide, we will be creating a single page product display of a Chec storefront using [Commerce.js](https://commercejs.com/) SDK and [Vue.js](https://vuejs.org/) as a framework. 
 
-What is **Commerce.js** you might ask? If this is your first foray into a **headless eCommerce** project, please continue to read on! Another question might then be "What is headless eCommerce?" There are definitely a lot of sources out there explaining what exactly this "headless" concept means. A headless platform has its frontend decoupled so that the data orchestration or inventory management is handled in the backend and fetched using an API. This concept completely eliminates the complexity and gives frontend developers the power to easily create an eCommerce web store, an otherwise daunting task if you are a newcomer. When I first started my dev career at [Commerce.js](https://commercejs.com/), I did my fair share of digging and wrote up a [TL;DR](https://dev.to/jaepass/what-is-headless-ecommerce-3nfb).
+What is **Commerce.js** you might ask? If this is your first foray into a **headless eCommerce** project, please continue to read on! Another question might then be "What is headless eCommerce?" There are definitely a lot of sources out there explaining what exactly this "headless" concept means. A headless platform has its frontend decoupled so that the data orchestration or inventory management is handled in the backend and fetched using an **API**. This concept completely eliminates the complexity and gives frontend developers the power to easily create an eCommerce web store, an otherwise daunting task if you are a newcomer. When I first started my dev career at [Commerce.js](https://commercejs.com/), I did my fair share of digging and wrote up a [TL;DR](https://dev.to/jaepass/what-is-headless-ecommerce-3nfb).
 
 Commerce.js is an **API-first** eCommerce solution platform aimed at creating seamless eCommerce solutions that easily integrate with any modern tool. As this was my first foray into creating a headless eCommerce solution, being able to jump right in and spit out a scaffold of a web store app really establishes[Commerce.js](https://commercejs.com/docs/getting-started) as a powerful developer tool with a low barrier to entry. But I would say the one best selling point about using a headless eCommerce tool like Commerce.js is the complete control you have over your frontend. Think of designing a unique digital experience with complete custom content consumption all the way through to your purchase flow. No out-of-the-box design here. If you can dream it, you can build it with Commerce.js! Please read more into Chec Platform (our API platform) and our Commerce.js SDK [here](commercejs.com/docs).
 
@@ -75,20 +75,20 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
 - CSS Pre-processors: SASS/SCSS (if you plan to use SASS)
 - Linter
 
-  2. Change directory into your project folder:
-  ```
-  cd your-project-name
-  ```
+2. Change directory into your project folder:
+```
+cd your-project-name
+```
 
-  3. Install dependencies required by the template (maybe brew yourself a nice cup of coffee after running installation):
-  ```
-  npm install
-  ```
+3. Install dependencies required by the template (maybe brew yourself a nice cup of coffee after running installation):
+```
+npm install
+```
 
-  4. Start your local http server and run development:
-  ```
-  npm run serve
-  ```
+4. Start your local http server and run development:
+```
+npm run serve
+```
 
 ### 3. Inject the Commerce.js logic layer
   1. In order to communicate with the Chec API and fetch data from the backend, we need to install the Commerce.js SDK:
