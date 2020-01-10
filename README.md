@@ -9,7 +9,7 @@ For this guide, we will be creating a single page product display of a Chec stor
 
 What is **Commerce.js** you might ask? If this is your first foray into a **headless eCommerce** project, please continue to read on! Another question might then be "What is headless eCommerce?" There are definitely a lot of sources out there explaining what exactly this "headless" concept means. A headless platform has its frontend decoupled so that the data orchestration or inventory management is handled in the backend and fetched using an **API**. This concept completely eliminates the complexity and gives frontend developers the power to easily create an eCommerce web store, an otherwise daunting task if you are a newcomer. When I first started my dev career at [Commerce.js](https://commercejs.com/), I did my fair share of digging and wrote up a [TL;DR](https://dev.to/jaepass/what-is-headless-ecommerce-3nfb).
 
-Commerce.js is an **API-first** eCommerce solution platform aimed at creating seamless eCommerce solutions that easily integrate with any modern tool. As this was my first foray into creating a headless eCommerce solution, being able to jump right in and spit out a scaffold of a web store app really establishes[Commerce.js](https://commercejs.com/docs/getting-started) as a powerful developer tool with a low barrier to entry. But I would say the one best selling point about using a headless eCommerce tool like Commerce.js is the complete control you have over your frontend. Think of designing a unique digital experience with complete custom content consumption all the way through to your purchase flow. No out-of-the-box design here. If you can dream it, you can build it with Commerce.js! Please read more into Chec Platform (our API platform) and our Commerce.js SDK [here](commercejs.com/docs).
+Commerce.js is an **API-first** eCommerce solution platform aimed at creating seamless eCommerce solutions that easily integrate with any modern tool. As this was my first foray into creating a headless eCommerce solution, being able to jump right in and spit out a **SPA** (Single Page App) web store really establishes [Commerce.js](https://commercejs.com/docs/getting-started) as a powerful developer tool with a low barrier to entry. But I would say the one best selling point about using a headless eCommerce tool like Commerce.js is the complete control you have over your frontend. Think of designing a unique digital experience with customized content consumption all the way through to your purchase flow. No *out-of-the-box* design here. If you can dream it, you can build it with Commerce.js! Please read more into Chec Platform (our API platform) and our Commerce.js SDK [here](commercejs.com/docs).
 
 ## Prerequisites
 
@@ -29,7 +29,7 @@ This project assumes you have some knowledge of the below concepts before starti
 
 - The goal of this tutorial is to walk you through creating a simple storefront displaying your product catalogue with Commerce.js and Vue.js. This particular project on the repository contains the full checkout process but for the sake of simplicity and easing into using Commerce.js, we will only be focusing our efforts in creating the product display. 
 
-- The styling of this project is done mainly using CSS and a bit of Bootstrap for basic layout. We will not be going into too much details on the styling and instead hone our focus in on the logic of Commerce.js.
+- The styling of this project is done mainly using CSS and a bit of Bootstrap for basic layout. We will not be going into styling details and instead hone our focus in on the logic of Commerce.js.
 
 - If you would like to jump right into forking this repo and customize the storefront as you please, then disregard the rest of this tutorial! Otherwise, let's get right into it!
 
@@ -39,11 +39,11 @@ This project assumes you have some knowledge of the below concepts before starti
 
   - To start building your eCommerce storefront, we first need to get you up and running with a [Chec](https://dashboard.chec.io/signup) account.
 
-  - Did you know you can get started with Chec for **_free_**? Yes, you heard right. Getting set up with our standard merchant account is completely **FREE**! So what are you waiting for? Let's head over to [Chec](https://dashboard.chec.io/signup) to create your account and get rockin' with creating your eCommerce website. 
+  - Did you know you can get started with Chec for **_free_**? Yes, you heard right. Getting set up with our standard merchant account is completely **FREE**! So what are you waiting for? Let's head over to [Chec](https://dashboard.chec.io/signup) to create your account and get rockin' with building your eCommerce website. 
 
 ### 2. Upload your products
 
-  - In order to build an eCommerce website, you'd need some data to work with like products and product information. So once you've set up your account, let's log in and start [uploading our products](https://dashboard.chec.io/products)! 
+  - In order to build an eCommerce website, you'd need some data to work with like products and product dtails. So once you've set up your account, let's log in and start [uploading our products](https://dashboard.chec.io/products)! 
 
   - To keep a visually modular product display, we will be uploading 9 products in total, each with the below details at the bare minimum:
     - Product Image
@@ -96,7 +96,7 @@ In order to communicate with the Chec API and fetch data from the backend, we ne
   npm install @chec/commerce.js
   ```
 
-Now we need to link up our Chec store to our project. To do so, we need to create a new Commerce instance and pass in our public API key (grab your public key from your [Chec dashboard](https://dashboard.chec.io/setup/developer)) Let's open up our `src/main.js` file:
+Now we need to link up our Chec store to our project. To do so, we need to create a new Commerce instance and pass in our public API key (grab your public key from your [Chec dashboard](https://dashboard.chec.io/setup/developer)). Let's open up our `src/main.js` file:
 
   ```javascript
   //main.js
@@ -127,7 +127,7 @@ import Vue from 'vue'
 import App from './App.vue'
 
 // Initialize store with public key, store key in variable
-const commerce = new Commerce('pk_17054571618e73520760e522b00e08ee196503b14e95c', true);
+const commerce = new Commerce('ENTER YOUR PUBLIC KEY HERE', true);
 
 Vue.config.productionTip = false
 
@@ -139,13 +139,13 @@ new Vue({
 }).$mount('#app')
 ```
 
-Our new Vue instance must be declared as an entry component in our `main.js`. We then have to define our mount property to point to the DOM and tell Vue where the entry component should be mounted. 
+Our new Vue instance must be declared as an entry component in our `main.js`. We then have to define our `$mount` property to point to the DOM and tell Vue where the entry component should be mounted. 
 
 ### 5. Start creating your product display
 
 We will be coding most of the logic in the `App.vue` file. So let's open up the file and see what we're working with!
 
-If you're starting your project from scratch, the Vue app has neatly laid out the file components for you. For modularity, your HTML markup, JS, and CSS live in a single `.vue` extend file. A scaffolded `App.vue` file contains these elements:
+If you're starting your project from scratch, the Vue app has neatly laid out the file components for you. For modularity, your HTML markup, JS, and CSS can all live in a single `.vue` extended file. A scaffolded `App.vue` file contains these elements:
 
 - `<template></template>` Within the template tags is where you will be writing your markup for your product display container
 - `<script></script>` In the script tags is where the logic of the app will live
@@ -215,9 +215,9 @@ export default {
 ```
 Let's start by breaking the above code down in chunks shall we?
 
-In our components property, we need to define `Product` as a **prop** to later return it in our `data()` function below. The returned object properties (our `Product` in this case) can then be bound to the template view. A **custom directive** which we will later bind to our template is essentially a **prop**, and our prop value is each individual looped product item. (more on this in the next section).
+In our components property, we need to define `Product` as a **prop** to later return it in our `data()` function below it. The returned object properties (our `Product` in this case) can then be bound to the template view. A **custom directive** which we will later bind to our template is essentially a **prop**, and our prop value is each individual looped product item. (more on this in the next section).
 
-When our App is created, we use Commerce.js `commerce.products.list()` method to respond with a list of our static product objects. As you can see, we are only making a request to our Chec store backend once our app is `created()`. Upon a successful request, we then list out our products, otherwise we respond with an error message. 
+When our App is created, we use Commerce.js `commerce.products.list()` method to respond with a list of our static product objects. As you can see, we are only making a request to our Chec store backend once our app is `created()`. Upon a successful request, we then list out our products, otherwise we respond with an error message. Commerce.js allows us to make asynchronous promise-based calls to only execute our products list, if and when our request was made successfully.
 
   **2. Add markup in `<template>`**
 
@@ -261,13 +261,15 @@ Nested within is our `<product>` component:
 <product :product="product" />  
 ```
 
-We bind our element attributes `v-bind:product="product"` with the `v:bind` directive. `:product="product"` is a shorthand of `v:bindproduct`. We will get to creating our Product component in the next section. At this point, what you need to understand is the `<product>` component within the template is injecting in and displaying what our products layout. 
+We bind our element attributes `v-bind:product="product"` with the `v:bind` directive. `:product="product"` is a shorthand of `v-bind:product`. We will get to creating our Product component in the next section. At this point, what you need to understand is the `<product>` component within the template is what is injecting in and displaying what our products layout. 
 
-Let's now add our Product component and create a new file in `src/components`, name it `Product.vue`
+Let's now add our Product component: Create a new file in `src/components` and name it `Product.vue`
 
 **1. Add logic in `<script>`**
 
 ```javascript
+//Product.vue
+
 <script>
 export default{
     name: 'product',
@@ -281,8 +283,6 @@ Here we are naming our component and passing our product as props.
   **2. Add layout in `<template>`**
 
 ```html
-<!-- Product.vue -->
-
 <template>
     <div class="card my-5 border-0" style="height:41rem;">
         <div class="card-body">
@@ -296,20 +296,3 @@ Here we are naming our component and passing our product as props.
 ```
 
 The **Commerce.js SDK** is what is allowing us to easily render our product data attributes such as `product.media.source`, `product.name`, `product.price.formatted_with_symbol`. Our Chec data can be rendered using either intepolation with double curly braces or custom directive attributes. Chec's API is beautifully designed with various endpoints to let you as a developer have access to work with all this data. It is now your turn to output your product data onto a unique customized eCommerce web app!
-
-## The finish line
-
-Now 
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
