@@ -71,9 +71,9 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
 
   Follow the next steps to add the following to your project (feel free to opt out for now as you can always install these dependencies separately later on):
 
-    - Babel
-    - CSS Pre-processors: SASS/SCSS (if you plan to use SASS)
-    - Linter
+- Babel
+- CSS Pre-processors: SASS/SCSS (if you plan to use SASS)
+- Linter
 
   2. Change directory into your project folder:
   ```
@@ -96,7 +96,7 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
   npm install @chec/commerce.js
   ```
 
-  2. Now we need to link up our Chec store to our project. To do so, we need to create a new Commerce instance and pass in our public API key (grab your public key from your [Chec dashboard](https://dashboard.chec.io/setup/developer)):
+  2. Now we need to link up our Chec store to our project. To do so, we need to create a new Commerce instance and pass in our public API key (grab your public key from your [Chec dashboard](https://dashboard.chec.io/setup/developer)) Let's open up our `src/main.js` file:
 
   ```javascript
   //main.js
@@ -139,6 +139,8 @@ new Vue({
 }).$mount('#app')
 ```
 
+Our new Vue instance must be declared as an entry component in our `main.js`. We then have to define our mount property to point to the DOM and tell Vue where the entry component should be mounted. 
+
 ### 5. Start creating your product display
 
 We will be coding most of the logic in the `App.vue` file. So let's open up the file and see what we're working with!
@@ -167,9 +169,9 @@ export default {
 </style>
 ```
 
-Once you have your App.vue skeleton, let's start adding in the elements.
+#### Once you have your App.vue skeleton, let's start adding in the elements.
 
-  1. Add logic in `<script>`
+  **1. Add logic in `<script>`**
 ```javascript
 //App.vue
 
@@ -213,11 +215,11 @@ export default {
 ```
 Let's start by breaking the above code down in chunks shall we?
 
-In our components object, we need to pass `Product` as a prop to later return it in our data function below it. The returned object property (our `Product` in this case) can then be bound to the template view. A custom directive which we will later bind to our template is essentially a prop, and our prop value is each individual looped product item. (more on this in the next section).
+In our components property, we need to define `Product` as a **prop** to later return it in our `data()` function below. The returned object properties (our `Product` in this case) can then be bound to the template view. A **custom directive** which we will later bind to our template is essentially a **prop**, and our prop value is each individual looped product item. (more on this in the next section).
 
-When our App is mounted/created, we use Commerce.js `commerce.products.list()` method to respond with a list of our static product objects. As you can see, we are only making a request to our Chec store backend once our app is `created()`. Upon a successful request, we then list out our products, otherwise we respond with an error message. 
+When our App is created, we use Commerce.js `commerce.products.list()` method to respond with a list of our static product objects. As you can see, we are only making a request to our Chec store backend once our app is `created()`. Upon a successful request, we then list out our products, otherwise we respond with an error message. 
 
-  2. Add layout in `<template>`
+  **2. Add markup in `<template>`**
 
 ```html
 <!-- App.vue -->
@@ -241,20 +243,23 @@ When our App is mounted/created, we use Commerce.js `commerce.products.list()` m
 </template>
 ```
 
-Now let's break down the code shall we?
+Now let's have a look at our template code.
 
 We can safely ignore those class attributes such as `container`, `mx`, `px`, `flex`, `col`, etc. as those are Bootstrap pre-defined class names. These Bootstrap components help to lay out the product display in responsive columns. 
 
-The neat thing about Vue is that it is a declarative framework, meaning we can render dynamic data to the DOM using Vue's straightforward template syntax. Vue also comes packed with built-in directives like `v-for`, which is most fitting to use to loop through our product data here:
+The neat thing about Vue is that it is a declarative framework, meaning we can render dynamic data to the DOM using Vue's straightforward template syntax. Vue also comes packed with built-in directives like `v-for`, which is most fitting to use for looping through our product data here:
 
 ```html
 <div v-for="product in products" :key="product.id">
 ```
 
-The v-for directive here helps to loop through each product data to render. The `:key` attribute gives each looped item a unique condition, which in this case we use our `product.id`. If you're curious in understanding more about the :key attribute, the Vue official docs provides more info [here](https://vuejs.org/v2/api/#key).
+The v-for directive here helps to loop through each product data object to render. The `:key` attribute gives each looped item a unique condition, which in this case we use our `product.id`. If you're curious in understanding more about the `:key` attribute, the Vue official docs provides more info [here](https://vuejs.org/v2/api/#key).
 
 
-Nested within the Bootstrap div tags is a `<product>` component. We will touch more on this below when we get into the `script` component.
+Nested within is our `<product>` component:
+```
+<product :product="product" />  
+```
 
 We bind our element attributes `v-bind:product="product"` with the `v:bind` directive. `:product="product"` is a shorthand of `v:bindproduct`. We will get to creating our Product component in the next section. At this point, what you need to understand is the `<product>` component within the template is injecting in and displaying what our products layout. 
 
