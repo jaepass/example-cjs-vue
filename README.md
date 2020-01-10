@@ -263,9 +263,9 @@ Nested within is our `<product>` component:
 
 We bind our element attributes `v-bind:product="product"` with the `v:bind` directive. `:product="product"` is a shorthand of `v:bindproduct`. We will get to creating our Product component in the next section. At this point, what you need to understand is the `<product>` component within the template is injecting in and displaying what our products layout. 
 
-Now, let's add a Product component
+#### Now, let's add a Product component
 
-  1. Add layout in `<template>`
+  **1. Add layout in `<template>`**
 
 ```html
 <!-- Product.vue -->
@@ -282,7 +282,7 @@ Now, let's add a Product component
 </template>
 ```
 
-2. Add logic in `<script>`
+**2. Add logic in `<script>`**
 
 ```javascript
 <script>
