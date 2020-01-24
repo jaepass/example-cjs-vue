@@ -80,7 +80,7 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
 cd your-project-name
 ```
 
-#### c) Install dependencies required by the template (maybe brew yourself a nice cup of coffee after running installation):**
+#### c) Install dependencies required by the template (maybe brew yourself a nice cup of coffee after running installation):
 ```
 npm install
 ```
@@ -215,7 +215,7 @@ export default {
 ```
 Let's start by breaking the above code down in chunks shall we?
 
-In our components property, we need to define `Product` as a **prop** to later return it in our `data()` function below it. The returned object properties (our `Product` in this case) can then be bound to the template view. A **custom directive** which we will later bind to our template is essentially a **prop**, and our prop value is each individual looped product item (more on this in the next section).
+In our components property, we need to define `Product` as a **prop** to later return it in our `data()` function below it. The returned object properties our `Product` in this case can be provided to the Product component as a prop. A **custom directive** which we will later bind to our template is essentially a **prop**, and our prop value is each individual looped product item (more on this in the next section).
 
 When our App is created, we use the Commerce.js `commerce.products.list()` method to respond with a list of our static product objects. As you can see, we are only making a request to our Chec store backend once our app is `created()`. Upon a successful request, we then list out our products, otherwise we respond with an error message. Commerce.js allows us to make asynchronous promise-based calls to only execute our products list, if and when our request was made successfully. Async calls like these are a good use case to add a loading indicator while promises are being resolved. 
 
@@ -234,7 +234,7 @@ When our App is created, we use the Commerce.js `commerce.products.list()` metho
                     <!-- :key is for Vue to keep track of items -->
                     <div class="col-sm-4" v-for="product in products" :key="product.id">
                         <!-- Bind product to cart -->
-                        <product  :product="product"/>  
+                        <Product  :product="product"/>  
                         </div><!-- END Product Catalogue -->
                     </div>
                 </div>
