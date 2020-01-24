@@ -75,7 +75,7 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
 - CSS Pre-processors: SASS/SCSS (if you plan to use SASS)
 - Linter
 
-### b) Change directory into your project folder:
+**b) Change directory into your project folder:**
 ```
 cd your-project-name
 ```
