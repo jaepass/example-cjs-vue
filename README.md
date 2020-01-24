@@ -9,7 +9,7 @@ For this guide, we will be creating a single page product display of a Chec stor
 
 What is **Commerce.js** you might ask? If this is your first foray into a **headless eCommerce** project, please continue to read on! Another question might then be "What is headless eCommerce?" There are definitely a lot of sources out there explaining what exactly this "headless" concept means. A headless platform has its frontend decoupled so that the data orchestration or inventory management is handled in the backend and fetched using an **API**. This concept completely eliminates the complexity and gives frontend developers the power to easily create an eCommerce web store, an otherwise daunting task if you are a newcomer. When I first started my dev career at [Commerce.js](https://commercejs.com/), I did my fair share of digging and wrote up a [TL;DR](https://dev.to/jaepass/what-is-headless-ecommerce-3nfb).
 
-Commerce.js is an **API-first** eCommerce solution platform aimed at creating seamless eCommerce solutions that easily integrate with any modern tool. As this was my first foray into creating a headless eCommerce solution, being able to jump right in and spit out a **SPA** (Single Page App) web store really establishes [Commerce.js](https://commercejs.com/docs/getting-started) as a powerful developer tool with a low barrier to entry. But I would say the one best selling point about using a headless eCommerce tool like Commerce.js is the complete control you have over your frontend. Think of designing a unique digital experience with customized content consumption all the way through to your purchase flow. No *out-of-the-box* design here. If you can dream it, you can build it with Commerce.js! Please read more into Chec Platform (our API platform) and our Commerce.js SDK [here](commercejs.com/docs).
+Commerce.js is an **API-first** eCommerce solution platform aimed at creating seamless eCommerce solutions that easily integrate with any modern tool. As this was my first foray into creating a headless eCommerce solution, being able to jump right in and spit out a **SPA** (Single Page App) web store really establishes [Commerce.js](https://commercejs.com/docs/overview/getting-started.html) as a powerful developer tool with a low barrier to entry. But I would say the one best selling point about using a headless eCommerce tool like Commerce.js is the complete control you have over your frontend. Think of designing a unique digital experience with customized content consumption all the way through to your purchase flow. No *out-of-the-box* design here. If you can dream it, you can build it with Commerce.js! Please read more into Chec Platform (our API platform) and our Commerce.js SDK [here](commercejs.com/docs).
 
 ## Prerequisites
 
@@ -21,7 +21,7 @@ This project assumes you have some knowledge of the below concepts before starti
 
 ## What you will need to start this project
 
-* IDE Code Editor
+* An IDE or code editor
 * NodeJS, at least v8/10
 * npm or yarn
 
@@ -39,11 +39,11 @@ This project assumes you have some knowledge of the below concepts before starti
 
   - To start building your eCommerce storefront, we first need to get you up and running with a [Chec](https://dashboard.chec.io/signup) account.
 
-  - Did you know you can get started with Chec for **_free_**? Yes, you heard right. Getting set up with our standard merchant account is completely **FREE**! So what are you waiting for? Let's head over to [Chec](https://dashboard.chec.io/signup) to create your account and get rockin' with building your eCommerce website. 
+  - Did you know you can get started with Chec for **_free_**? As long as you're in test mode, your account will remain at no cost to you. Let's head over to [Chec](https://dashboard.chec.io/signup) to create your account and get rockin' with building your eCommerce website. 
 
 ### 2. Upload your products
 
-  - In order to build an eCommerce website, you'd need some data to work with like products and product dtails. So once you've set up your account, let's log in and start [uploading our products](https://dashboard.chec.io/products)! 
+  - In order to build an eCommerce website, you'd need some data to work with like products and product details. So once you've set up your account, let's log in and start [uploading our products](https://dashboard.chec.io/products)! 
 
   - To keep a visually modular product display, we will be uploading 9 products in total, each with the below details at the bare minimum:
     - Product Image
@@ -63,7 +63,7 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
   ```
 
 ### 2. Set up your Vue project:
-  **1. To create a new project, run:**
+  **a) To create a new project, run:**
 
   ```
   vue create your-project-name
@@ -75,17 +75,17 @@ For this particular demo storefront integration, we are using [Vue.js](https://v
 - CSS Pre-processors: SASS/SCSS (if you plan to use SASS)
 - Linter
 
-**2. Change directory into your project folder:**
+**b) Change directory into your project folder:**
 ```
 cd your-project-name
 ```
 
-**3. Install dependencies required by the template (maybe brew yourself a nice cup of coffee after running installation):**
+**c) Install dependencies required by the template (maybe brew yourself a nice cup of coffee after running installation):**
 ```
 npm install
 ```
 
-**4. Start your local http server and run development:**
+**4. Start your local HTTP server and run development:**
 ```
 npm run serve
 ```
@@ -151,7 +151,7 @@ If you're starting your project from scratch, the Vue app has neatly laid out th
 - `<script></script>` In the script tags is where the logic of the app will live
 - `<style></style>` The style tags is where you'll be styling the components of your app
 
-Or simply start a new file skeleton structure by typing `/` + `tab` key. You will end up with a file structure like this:
+If you're Visual Studio Code Editor, simply start a new file skeleton structure by typing `/` + `tab`. You will end up with a file structure like this:
 
 ```javascript
 <template>
@@ -206,7 +206,7 @@ export default {
     })
     //Handle Error
     .catch((error) => {
-        alert(error);
+        console.log(error);
     });
   },
 };
@@ -215,9 +215,9 @@ export default {
 ```
 Let's start by breaking the above code down in chunks shall we?
 
-In our components property, we need to define `Product` as a **prop** to later return it in our `data()` function below it. The returned object properties (our `Product` in this case) can then be bound to the template view. A **custom directive** which we will later bind to our template is essentially a **prop**, and our prop value is each individual looped product item. (more on this in the next section).
+In our components property, we need to define `Product` as a **prop** to later return it in our `data()` function below it. The returned object properties (our `Product` in this case) can then be bound to the template view. A **custom directive** which we will later bind to our template is essentially a **prop**, and our prop value is each individual looped product item (more on this in the next section).
 
-When our App is created, we use Commerce.js `commerce.products.list()` method to respond with a list of our static product objects. As you can see, we are only making a request to our Chec store backend once our app is `created()`. Upon a successful request, we then list out our products, otherwise we respond with an error message. Commerce.js allows us to make asynchronous promise-based calls to only execute our products list, if and when our request was made successfully.
+When our App is created, we use the Commerce.js `commerce.products.list()` method to respond with a list of our static product objects. As you can see, we are only making a request to our Chec store backend once our app is `created()`. Upon a successful request, we then list out our products, otherwise we respond with an error message. Commerce.js allows us to make asynchronous promise-based calls to only execute our products list, if and when our request was made successfully. Async calls like these are a good use case to add a loading indicator while promises are being resolved. 
 
   **2. Add markup in `<template>`**
 
@@ -245,7 +245,7 @@ When our App is created, we use Commerce.js `commerce.products.list()` method to
 
 Now let's have a look at our template code.
 
-We can safely ignore those class attributes such as `container`, `mx`, `px`, `flex`, `col`, etc. as those are Bootstrap pre-defined class names. These Bootstrap components help to lay out the product display in responsive columns. 
+We can safely ignore those class attributes such as `container`, `mx`, `px`, `flex`, `col`, etc. as those are Bootstrap pre-defined class names. These Bootstrap styles help to lay out the product display in responsive columns. 
 
 The neat thing about Vue is that it is a declarative framework, meaning we can render dynamic data to the DOM using Vue's straightforward template syntax. Vue also comes packed with built-in directives like `v-for`, which is most fitting to use for looping through our product data here:
 
@@ -253,15 +253,15 @@ The neat thing about Vue is that it is a declarative framework, meaning we can r
 <div v-for="product in products" :key="product.id">
 ```
 
-The v-for directive here helps to loop through each product data object to render. The `:key` attribute gives each looped item a unique condition, which in this case we use our `product.id`. If you're curious in understanding more about the `:key` attribute, the Vue official docs provides more info [here](https://vuejs.org/v2/api/#key).
+The v-for directive here helps to loop through each product data object to render. The `:key` attribute gives each looped item a unique condition, which in this case we use our `product.id`. If you're curious to understand more about the `:key` attribute, the Vue official docs provide more info [here](https://vuejs.org/v2/api/#key).
 
 
-Nested within is our `<product>` component:
+Nested within is our `<Product>` component:
 ```
-<product :product="product" />  
+<Product :product="product" />  
 ```
 
-We bind our element attributes `v-bind:product="product"` with the `v:bind` directive. `:product="product"` is a shorthand of `v-bind:product`. We will get to creating our Product component in the next section. At this point, what you need to understand is the `<product>` component within the template is what is injecting in and displaying what our products layout. 
+We bind our element attributes `v-bind:product="product"` with the `v:bind` directive. `:product="product"` is a shorthand of `v-bind:product`. We will get to creating our Product component in the next section. At this point, what you need to understand is the `<Product>` component within the template is what is injecting in and displaying what our products layout. 
 
 Let's now add our Product component: Create a new file in `src/components` and name it `Product.vue`
 
