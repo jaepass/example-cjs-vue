@@ -113,7 +113,8 @@ export default {
       })
       //Error
       .catch((error) => {
-          alert(error);
+        // eslint-disable-next-line
+        console.log(error);
       });
 
     //Invoke commerce cart method to retrieve cart in session
@@ -123,7 +124,8 @@ export default {
     })
       //Error
       .catch((error) => {
-        alert(error);
+        // eslint-disable-next-line
+        console.log(error);
       })
   },
 
@@ -157,10 +159,10 @@ export default {
       })
       //Error
       .catch((error) => {
-          alert(error);
+        // eslint-disable-next-line
+        console.log(error);
       });
     },
-
 
     //Update items in cart
     // updateCart(product) {
@@ -178,7 +180,8 @@ export default {
       })
       //Error
       .catch((error) => {
-        alert(error)
+        // eslint-disable-next-line
+        console.log(error);
       })
     },
 
@@ -189,7 +192,8 @@ export default {
         this.checkout = checkout;
       })
       .catch((error) => {
-        alert(error);
+        // eslint-disable-next-line
+        console.log(error);
       });
     },
     
@@ -203,7 +207,8 @@ export default {
       })
         //Error
         .catch((error) => {
-        alert(error);
+        // eslint-disable-next-line
+        console.log(error);
       });
     }
 
