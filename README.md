@@ -330,7 +330,7 @@ Nested within is our `<Product>` component:
 <Product :product="product" />  
 ```
 
-We bind our element attributes `v-bind:product="product"` with the `v:bind` directive. `:product="product"` is a shorthand of `v-bind:product`. We will get to creating our Product component in the next section. At this point, what you need to understand is the `<Product>` component within the template is what is injecting in and displaying what our products layout. 
+We bind our element attributes `v-bind:product="product"` with the `v:bind` directive. `:product="product"` is a shorthand of `v-bind:product`. We will get to creating our Product component in the next section. At this point, what you need to understand is the `<Product>` component within the template is what is injecting in and displaying our products layout. 
 
 Let's now add our Product component: Create a new file in `src/components` and name it `Product.vue`
 
@@ -364,4 +364,20 @@ Here we are naming our component and passing our product as props.
 </template>
 ```
 
-The **Commerce.js SDK** is what is allowing us to easily render our product data attributes such as `product.media.source`, `product.name`, `product.price.formatted_with_symbol`. Our Chec data can be rendered using either intepolation with double curly braces or custom directive attributes. Chec's API is beautifully designed with various endpoints to let you as a developer have access to work with all this data. It is now your turn to output your product data onto a unique customized eCommerce web app!
+The **Commerce.js SDK** is what is allowing us to easily render our product data attributes such as `product.media.source`, `product.name`, `product.price.formatted_with_symbol`. Our Chec data can be rendered using either intepolation with double curly braces or custom directive attributes. Chec's API is beautifully designed with various endpoints to let you as a developer have access to work with all this data. 
+
+### Next steps would be to:
+
+1. Fetch your cart by using the retrieve method on your [cart object](http://commercejs.com/docs/api/#retrieve-a-cart) `commerce.cart.retrieve()` 
+2. [Add products](http://commercejs.com/docs/api/#add-item-to-cart) to your cart with the `commerce.cart.add` method. 
+3. Create a [checkout token](http://commercejs.com/docs/api/#generate-token) with `commerce.cart.generateToken` and [capture your checkout](http://commercejs.com/docs/api/#capture-order) with `commerce.checkout.capture`. 
+
+I encourage you to check out Commerce.js documentation, resources, and blogs below. 
+
+[commercejs.com/docs/getting-started](https://commercejs.com/docs/getting-started)
+[commercejs.com/resources](https://commercejs.com/resources)
+[blog.commercejs.com](https://blog.commercejs.com)
+
+Join our community [here!](https://chec-commercejs-community.herokuapp.com)
+
+
