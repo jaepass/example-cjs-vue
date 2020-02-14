@@ -7,11 +7,11 @@
             <p class="description text-center card-text display-5" v-html="product.description"></p>
             <p class="text-center text-muted card-subtitle display-5 price">{{product.price.formatted_with_symbol}}</p>
             <!-- add to cart button -->
-            <div class="add-btns d-flex">
-                <button :disabled="isInCart" 
-                        @click="$emit('add-to-cart', product)"
-                        class="btn btn-info form-control">
-                        {{ isInCart ? 'Added to Cart' : 'Add to Cart' }}
+            <div class="d-flex pt-3">
+                <button
+                    :disabled="isInCart"
+                    @click="$emit('add-to-cart', product)"
+                    class="btn-add text-center">{{ isInCart ? 'Added to Cart' : 'Add to Cart' }}
                 </button>
             </div><!-- End of Adding btn -->
         </div>
@@ -21,7 +21,7 @@
 <script>
 export default{
     name: 'product',
-    props: ['product','isInCart']
+    props: ['product', 'isInCart']
 }
 </script>
 
@@ -40,16 +40,21 @@ export default{
         line-height: 32px;
     }
 
-    button.btn{
-        background-color: transparent;
-        text-decoration: underline;
-        border: none;
-        color: rgb(60, 60, 60);
-    }
-    button.btn:hover{
-        text-decoration: none;
-        background-color: transparent;
+    .btn-add {
+        border: 1px solid #040034;
+        width: 130px;
+        margin: 0 auto;
+        line-height: 28px;
+        cursor: pointer;
+        font-size: 13px;
         color: #040034;
+        text-transform: uppercase;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .btn-add:hover{
+        background-color: #040034;
+        color: white;
     }
 
 </style>

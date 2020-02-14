@@ -28,11 +28,9 @@
     <div class="container mx-auto px-4">
       <div class="flex mb-4">
           <div class="row" id="shop">
-          <!-- Loop through products and output -->
-          <!-- :key is for Vue to keep track of items with ids -->
             <div class="col-sm-4" v-for="product in products" :key="product.id">
               <!-- Bind product to cart -->
-              <product  :product="product"
+              <Product  :product="product"
                         @add-to-cart="addToCart(product)"
                         :isInCart="isInCart(product)"/>  
             </div><!-- END Product Catalogue -->
@@ -43,7 +41,7 @@
           <!-- Cart container -->
           <div class="cart px-5" id="cart">
             <div class="my-5">
-              <cart :items="cartItems"
+              <Cart :items="cartItems"
                     @remove-from-cart="removeFromCart"
                     @generate-checkout="generateCheckout()" />
             </div>
@@ -51,7 +49,7 @@
 
           <!-- Checkout Form -->
           <div v-if="checkout" class="checkout round-lg py-4 px-4 shadow-sm bg-white rounded mb-20">
-              <checkout :checkout="checkout"
+              <Checkout :checkout="checkout"
                         :commerce="commerce"
                         @confirm-order="confirmOrder" />
           </div><!-- END Checkout form -->
@@ -163,15 +161,6 @@ export default {
         console.log(error);
       });
     },
-
-    //Update items in cart
-    // updateCart(product) {
-    //   const item = this.cartItems.find(item => item.id === product.id);
-    //   if (item) {
-    //     return true;
-    //   }
-    //   return false;
-    // },
     
     refreshCart(){
       this.commerce.cart.refresh((resp) => {
@@ -345,6 +334,7 @@ nav{
 .checkout{
   box-shadow: 0 0 10px rgb(223, 223, 223);
   width: 500px; 
+  margin-bottom: 40px;
 }
 
   @media only screen and (max-width: 400px){

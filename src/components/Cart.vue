@@ -2,20 +2,20 @@
     <div class="cart-wrapper">
       <ul class="list-group">
         <div v-if="items.length >= 1"><h3 class="pb-3">Shopping Cart</h3></div>
-        <li class="list-group-item item-name" v-for="item in items" :key="item.id">
+        <li class=" item-name" v-for="item in items" :key="item.id">
           {{ item.name }} <span class="text-center">{{ item.price.formatted_with_symbol }}</span>
           <button @click="$emit('remove-from-cart', item.id)"
-                  class="bg-transparent py-2 px-4 border hover:border-transparent rounded float-right">Remove</button>
+                  class="btn-remove py-2 px-4 float-right">Remove</button>
         </li>
       </ul>
-      <div class="card" v-if="items.length >= 1">
-        <h4 class="text-center">Total Due: ${{ cartTotal.toFixed(2) }}</h4>
+      <div class="total" v-if="items.length >= 1">
+        <p class="text-right">Total Due: <b>${{ cartTotal.toFixed(2) }}</b></p>
       </div>
 
     <button
       v-if="items.length >= 1"
       @click="$emit('generate-checkout')"
-      class="checkout-btn form-control"
+      class="btn-checkout form-control mt-3"
     >Checkout</button>
   </div>
 </template>
@@ -33,17 +33,58 @@ export default {
 </script>
 
 <style>
+
+.cart-wrapper {
+  width: 380px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgb(223, 223, 223);
+}
+
 .cart-wrapper h2{
   padding-bottom: 15px;
 }
 
-.checkout-btn{
-    background-color: black;
+.cart-wrapper ul {
+  border: none;
+  
+}
+
+.cart-wrapper li {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.331);
+  list-style: none;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-remove {
+  border: 1px solid #040034;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+  .btn-remove:hover{
+      background-color: #040034;
+      color: white;
+  }
+
+.btn-checkout {
+    background-color: #040034;
     color: white;
     letter-spacing: 2.75px;
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 500;
+    line-height: 25px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-checkout:hover {
+  background-color: black;
 }
 
 </style>
