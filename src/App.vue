@@ -34,6 +34,8 @@
                         @add-to-cart="addToCart(product)"
                         :isInCart="isInCart(product)"/>  
             </div><!-- END Product Catalogue -->
+
+            {{products}}
           </div>
         </div>
 

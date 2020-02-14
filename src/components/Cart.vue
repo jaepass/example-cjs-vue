@@ -1,7 +1,7 @@
 <template>
-    <div class="cart-wrapper">
+    <div v-if="items.length >= 1" class="cart-wrapper">
       <ul class="list-group">
-        <div v-if="items.length >= 1"><h3 class="pb-3">Shopping Cart</h3></div>
+        <h3 class="pb-3">Shopping Cart</h3>
         <li class=" item-name" v-for="item in items" :key="item.id">
           {{ item.name }} <span class="text-center">{{ item.price.formatted_with_symbol }}</span>
           <button @click="$emit('remove-from-cart', item.id)"

@@ -59,7 +59,7 @@
                 <label class="d-block pt-3" for="ccv">CCV</label>
                 <input class="p-1 col-xs-3" type="text" name="ccv" v-model="ccv" placeholder="CCV (3 digits)" />
 
-            <button class="mt-5 py-2 form-control confirm-btn" @click.prevent="confirmOrder()">Confirm Order</button>
+            <button class="mt-5 py-2 form-control btn-confirm" @click.prevent="confirmOrder()">Confirm Order</button>
             
         </form>
     </div>
@@ -175,13 +175,20 @@ export default {
 
 <style>
 
-.confirm-btn{
-    background-color: black;
+.btn-confirm{
+    background-color: #040034;
+    color: white;
     color: white;
     letter-spacing: 2.8px;
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-confirm:hover {
+  background-color: black;
 }
 
 

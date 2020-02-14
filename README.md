@@ -215,9 +215,78 @@ export default {
 ```
 Let's start by breaking the above code down in chunks shall we?
 
-In our components property, we need to define `Product` as a **prop** to later return it in our `data()` function below it. The returned object properties our `Product` in this case can be provided to the Product component as a prop. A **custom directive** which we will later bind to our template is essentially a **prop**, and our prop value is each individual looped product item (more on this in the next section).
+In our components property, we need to define `Product` as a **prop** to later return it in our `data()` function below it. The returned object property, our `Product` in this case, can be provided to the Product component as a prop. A **custom directive** which we will later bind to our template is essentially a **prop**, and our prop value is each single looped product item (more on this in the next section).
 
-When our App is created, we use the Commerce.js `commerce.products.list()` method to respond with a list of our static product objects. As you can see, we are only making a request to our Chec store backend once our app is `created()`. Upon a successful request, we then list out our products, otherwise we respond with an error message. Commerce.js allows us to make asynchronous promise-based calls to only execute our products list, if and when our request was made successfully. Async calls like these are a good use case to add a loading indicator while promises are being resolved. 
+When our App is created, we use the Commerce.js `commerce.products.list()` method to fetch a list of our static product objects. As you can see, we are only making a request to our Chec store backend once our app is `created()`. Upon a successful request, you will see the responded data below, otherwise we respond with an error message. Commerce.js allows us to make asynchronous promise-based calls to only execute our products list, if and when our request was made successfully. Async calls like these are a good use case to add a loading indicator while promises are being resolved. 
+
+```json
+[
+  {
+    "id": "prod_4WJvlKr9Z5bYV1",
+    "created": 1573158728,
+    "last_updated": 1574205750,
+    "active": true,
+    "permalink": "black-leather-watcch",
+    "name": "Movado Watch",
+    "description": "<p>Brown leather Movado watch</p>",
+    "price": {
+      "raw": 380,
+      "formatted": "380.00",
+      "formatted_with_symbol": "$380.00",
+      "formatted_with_code": "380.00 CAD"
+    },
+    "quantity": 17,
+    "media": {
+      "type": "image",
+      "source": "https://assets.chec-cdn.com/merchants/17054/images/956c7243a4128045f27d0f17386685b10463896d5dcb86c88559a|8e664b6f-6cbf-4809-a8a0-a17080164770.jpeg"
+    },
+    "sku": null,
+    "conditionals": {
+      "is_active": true,
+      "is_free": false,
+      "is_pay_what_you_want": false,
+      "is_quantity_limited": true,
+      "is_sold_out": false,
+      "has_digital_delivery": false,
+      "has_physical_delivery": true,
+      "has_images": true,
+      "has_video": false,
+      "has_rich_embed": false,
+      "collects_fullname": false,
+      "collects_shipping_address": true,
+      "collects_billing_address": false,
+      "collects_extrafields": false
+    },
+    "is": {
+      "active": true,
+      "free": false,
+      "pay_what_you_want": false,
+      "quantity_limited": true,
+      "sold_out": false
+    },
+    "has": {
+      "digital_delivery": false,
+      "physical_delivery": true,
+      "images": true,
+      "video": false,
+      "rich_embed": false
+    },
+    "collects": {
+      "fullname": false,
+      "shipping_address": true,
+      "billing_address": false,
+      "extrafields": false
+    },
+    "checkout_url": {
+      "checkout": "https://checkout.chec.io/black-leather-watcch?checkout=true",
+      "display": "https://checkout.chec.io/black-leather-watcch"
+    },
+    "categories": [
+      { "id": "cat_jr2LM5Qar5ZV1g", "slug": "leather", "name": "Leather" }
+    ]
+  }
+]
+```
 
   **2. Add markup in `<template>`**
 
